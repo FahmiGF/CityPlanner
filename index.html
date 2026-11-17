@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>CityPlanner — Urban Planning & Architecture Studio</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Three.js CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <!-- OrbitControls CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <!-- Vendored libraries: the app works fully offline, no CDN required -->
+  <script src="vendor/tailwind.js"></script>
+  <!-- Three.js r128 + OrbitControls (local) -->
+  <script src="vendor/three.min.js"></script>
+  <script src="vendor/OrbitControls.js"></script>
+  <!-- Lucide Icons (local) -->
+  <script src="vendor/lucide.js"></script>
   <!-- Custom CityPlanner Styles -->
-  <link rel="stylesheet" href="backend/app/static/cityplanner.css" />
+  <link rel="stylesheet" href="cityplanner.css" />
 </head>
 <body class="h-screen w-screen flex flex-col antialiased bg-[#0c120e] text-slate-200 overflow-hidden">
 
@@ -81,6 +81,7 @@
           <i data-lucide="chevron-down" class="w-3 h-3 text-slate-400"></i>
         </button>
         <div id="quickLayersMenu" class="hidden absolute right-0 mt-2 w-48 rounded-xl bg-[#121a14] border border-[#233227] p-2 shadow-2xl z-50 text-xs space-y-1">
+          <!-- Injected via JS -->
         </div>
       </div>
 
@@ -157,6 +158,7 @@
 
       <!-- Categories & Cards List -->
       <div id="paletteCategoriesContainer" class="flex-1 overflow-y-auto p-3 space-y-4">
+        <!-- Injected via JavaScript (158 assets across 6 urban categories) -->
       </div>
     </aside>
 
@@ -195,10 +197,11 @@
           </div>
         </div>
         <div id="pipThreeCanvasContainer" class="w-full h-full relative bg-slate-950">
+          <!-- 3D Mini Scene Injected via JS -->
         </div>
       </div>
 
-      <!-- Floating Bottom Action Dock -->
+      <!-- Floating Bottom Action Dock (Pointer, Marquee, Pan, Rotate, Delete) -->
       <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 floating-dock rounded-xl px-2 py-1.5 flex items-center gap-1">
         <button onclick="setToolMode('pointer')" id="toolPointer" class="p-2 rounded-lg bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 transition hover:bg-emerald-600/40" title="Pointer / Select Tool (V)">
           <i data-lucide="mouse-pointer-2" class="w-4 h-4"></i>
@@ -447,15 +450,21 @@
         </h3>
         
         <div class="flex items-center gap-4 pt-1">
+          <!-- Circular Donut Chart SVG -->
           <div class="relative w-18 h-18 shrink-0">
             <svg class="w-18 h-18 -rotate-90 transform" viewBox="0 0 36 36">
+              <!-- Background Circle -->
               <circle cx="18" cy="18" r="14" fill="none" stroke="#1f2922" stroke-width="5" />
+              <!-- Built Segment (46.6%) -->
               <circle class="donut-segment" cx="18" cy="18" r="14" fill="none" stroke="#3b82f6" stroke-width="5" stroke-dasharray="41 88" stroke-dashoffset="0" />
+              <!-- Green Segment (38.1%) -->
               <circle class="donut-segment" cx="18" cy="18" r="14" fill="none" stroke="#10b981" stroke-width="5" stroke-dasharray="33.5 88" stroke-dashoffset="-41" />
+              <!-- Infrastructure Segment (15.3%) -->
               <circle class="donut-segment" cx="18" cy="18" r="14" fill="none" stroke="#f59e0b" stroke-width="5" stroke-dasharray="13.5 88" stroke-dashoffset="-74.5" />
             </svg>
           </div>
 
+          <!-- Legend -->
           <div class="space-y-1 text-[11px] font-mono flex-1">
             <div class="flex items-center justify-between">
               <span class="flex items-center gap-1.5 text-slate-300">
@@ -483,7 +492,9 @@
 
   </div>
 
-  <!-- Settings Modal -->
+  <!-- ======================================================== -->
+  <!-- SETTINGS MODAL -->
+  <!-- ======================================================== -->
   <div id="settingsModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#121914] max-w-md w-full rounded-2xl border border-[#233227] p-6 space-y-4 shadow-2xl">
       <div class="flex items-center justify-between pb-3 border-b border-white/10">
@@ -539,6 +550,6 @@
   </div>
 
   <!-- Load CityPlanner Core Engine -->
-  <script src="backend/app/static/cityplanner.js"></script>
+  <script src="cityplanner.js"></script>
 </body>
 </html>

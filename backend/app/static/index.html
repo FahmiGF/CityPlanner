@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>CityPlanner — Urban Planning & Architecture Studio</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Three.js CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <!-- OrbitControls CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <!-- Vendored libraries: the app works fully offline, no CDN required -->
+  <script src="vendor/tailwind.js"></script>
+  <!-- Three.js r128 + OrbitControls (local) -->
+  <script src="vendor/three.min.js"></script>
+  <script src="vendor/OrbitControls.js"></script>
+  <!-- Lucide Icons (local) -->
+  <script src="vendor/lucide.js"></script>
   <!-- Custom CityPlanner Styles -->
   <link rel="stylesheet" href="cityplanner.css" />
 </head>
@@ -158,7 +158,7 @@
 
       <!-- Categories & Cards List -->
       <div id="paletteCategoriesContainer" class="flex-1 overflow-y-auto p-3 space-y-4">
-        <!-- Injected via JavaScript (BUILDINGS 24, COMMERCIAL 18, INDUSTRIAL 14, PUBLIC 16, PARKS 20, INFRASTRUCTURE 32) -->
+        <!-- Injected via JavaScript (158 assets across 6 urban categories) -->
       </div>
     </aside>
 

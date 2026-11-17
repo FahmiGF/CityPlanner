@@ -43,3 +43,9 @@ async def health():
         "version": "1.0.0",
         "optimized": True
     }
+
+# Serve the static site from the web root as well, so relative asset paths in
+# index.html (cityplanner.js, cityplanner.css, vendor/*) resolve correctly.
+# This mount must stay last so /api and /docs keep priority.
+if STATIC_DIR.exists():
+    app.mount("/", StaticFiles(directory=STATIC_DIR, html=True), name="root")

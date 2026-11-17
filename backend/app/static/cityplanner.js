@@ -32,6 +32,14 @@ const ASSET_CATALOG = {
     { type: 'warehouse', name: 'Warehouse', w: 150, d: 85, h: 14, category: 'buildings', layer: 'buildings', color: '#424242', desc: 'High-bay logistics fulfillment warehouse with loading docks.' },
     { type: 'factory', name: 'Factory', w: 140, d: 80, h: 18, category: 'buildings', layer: 'buildings', color: '#37474f', desc: 'Advanced manufacturing plant with sawtooth skylights.' },
     { type: 'data_center', name: 'Data Center', w: 160, d: 90, h: 12, category: 'buildings', layer: 'buildings', color: '#263238', desc: 'Tier-IV hyperscale data center with rooftop chillers.' },
+    { type: 'convention_center', name: 'Convention Center', w: 200, d: 120, h: 26, category: 'buildings', layer: 'buildings', color: '#0f766e', desc: 'Landmark exhibition hall with a sweeping glass atrium and conference wings.' },
+    { type: 'opera_house', name: 'Opera House', w: 130, d: 95, h: 32, category: 'buildings', layer: 'buildings', color: '#b45309', desc: 'Performing arts opera house with a sculpted shell roof and grand foyer.' },
+    { type: 'aquarium', name: 'Aquarium', w: 140, d: 90, h: 18, category: 'buildings', layer: 'buildings', color: '#0369a1', desc: 'Public aquarium with a glass tunnel and ocean habitat tanks.' },
+    { type: 'planetarium', name: 'Planetarium', w: 70, d: 70, h: 24, category: 'buildings', layer: 'buildings', color: '#1e3a8a', desc: 'Domed planetarium and space science discovery center.' },
+    { type: 'art_gallery', name: 'Art Gallery', w: 95, d: 65, h: 16, category: 'buildings', layer: 'buildings', color: '#6b7280', desc: 'Contemporary art gallery with skylit exhibition halls.' },
+    { type: 'theater', name: 'Theater', w: 85, d: 70, h: 20, category: 'buildings', layer: 'buildings', color: '#7e22ce', desc: 'Dramatic theater with fly tower, stage house, and marquee entrance.' },
+    { type: 'sports_arena', name: 'Sports Arena', w: 170, d: 140, h: 38, category: 'buildings', layer: 'buildings', color: '#1d4ed8', desc: 'Indoor multi-purpose sports arena with bowl seating and roof trusses.' },
+    { type: 'tech_campus', name: 'Tech Campus', w: 150, d: 100, h: 24, category: 'buildings', layer: 'buildings', color: '#0d9488', desc: 'Innovation campus with connected glass office pavilions and courtyards.' },
   ],
 
   commercial: [
@@ -53,6 +61,12 @@ const ASSET_CATALOG = {
     { type: 'boutique', name: 'Boutique', w: 26, d: 18, h: 7, category: 'commercial', layer: 'buildings', color: '#db2777', desc: 'High-end designer fashion boutique.' },
     { type: 'food_court', name: 'Food Court', w: 70, d: 45, h: 9, category: 'commercial', layer: 'buildings', color: '#f59e0b', desc: 'Covered open-air international gourmet food pavilion.' },
     { type: 'nightclub', name: 'Nightclub', w: 45, d: 35, h: 9, category: 'commercial', layer: 'buildings', color: '#9333ea', desc: 'Entertainment lounge and nightlife music venue.' },
+    { type: 'department_store', name: 'Department Store', w: 110, d: 80, h: 18, category: 'commercial', layer: 'buildings', color: '#be123c', desc: 'Multi-floor department store with window displays and rooftop signage.' },
+    { type: 'electronics_store', name: 'Electronics Store', w: 60, d: 45, h: 10, category: 'commercial', layer: 'buildings', color: '#2563eb', desc: 'Consumer electronics megastore with glass frontage.' },
+    { type: 'furniture_store', name: 'Furniture Store', w: 80, d: 55, h: 11, category: 'commercial', layer: 'buildings', color: '#a16207', desc: 'Large-format furniture showroom with loading bay.' },
+    { type: 'flower_shop', name: 'Flower Shop', w: 18, d: 14, h: 5, category: 'commercial', layer: 'buildings', color: '#db2777', desc: 'Street-corner florist with a colorful display awning.' },
+    { type: 'pet_store', name: 'Pet Store', w: 26, d: 20, h: 6, category: 'commercial', layer: 'buildings', color: '#65a30d', desc: 'Neighborhood pet supply store and grooming salon.' },
+    { type: 'arcade', name: 'Arcade', w: 40, d: 30, h: 8, category: 'commercial', layer: 'buildings', color: '#c026d3', desc: 'Family entertainment arcade with neon signage.' },
   ],
 
   industrial: [
@@ -70,6 +84,10 @@ const ASSET_CATALOG = {
     { type: 'data_hall', name: 'Data Hall', w: 120, d: 70, h: 10, category: 'industrial', layer: 'buildings', color: '#18181b', desc: 'Server hall with high-density server rack containment.' },
     { type: 'grain_silo', name: 'Grain Silo', w: 60, d: 45, h: 35, category: 'industrial', layer: 'buildings', color: '#78716c', desc: 'Agricultural bulk concrete grain storage elevator.' },
     { type: 'hangar', name: 'Aircraft Hangar', w: 130, d: 90, h: 22, category: 'industrial', layer: 'buildings', color: '#52525b', desc: 'Wide-span aircraft maintenance and storage hangar.' },
+    { type: 'assembly_plant', name: 'Assembly Plant', w: 180, d: 100, h: 24, category: 'industrial', layer: 'buildings', color: '#3f3f46', desc: 'Precision manufacturing assembly plant with robotic lines.' },
+    { type: 'cement_plant', name: 'Cement Plant', w: 190, d: 130, h: 45, category: 'industrial', layer: 'utilities', color: '#78716c', desc: 'Cement works with rotary kilns, silos, and conveyor galleries.' },
+    { type: 'cold_storage', name: 'Cold Storage', w: 120, d: 80, h: 16, category: 'industrial', layer: 'buildings', color: '#0e7490', desc: 'Refrigerated food distribution warehouse with insulated panels.' },
+    { type: 'incinerator', name: 'Waste-to-Energy', w: 150, d: 100, h: 40, category: 'industrial', layer: 'utilities', color: '#b45309', desc: 'Waste-to-energy plant with turbine hall and filtration stacks.' },
   ],
 
   public_facilities: [
@@ -89,6 +107,12 @@ const ASSET_CATALOG = {
     { type: 'guard_booth', name: 'Guard Booth', w: 6, d: 6, h: 3.5, category: 'public_facilities', layer: 'buildings', color: '#64748b', desc: 'Security access checkpoint booth with boom gate barrier.' },
     { type: 'helipad', name: 'Helipad', w: 32, d: 32, h: 1, category: 'public_facilities', layer: 'infrastructure', color: '#dc2626', desc: 'Elevated helicopter takeoff and landing pad.' },
     { type: 'cell_tower', name: 'Cell Tower', w: 6, d: 6, h: 48, category: 'public_facilities', layer: 'utilities', color: '#94a3b8', desc: '5G cellular communications mast with antenna arrays.' },
+    { type: 'city_hall', name: 'City Hall', w: 150, d: 100, h: 30, category: 'public_facilities', layer: 'buildings', color: '#3f6212', desc: 'City hall with council chamber, public plaza, and clock tower.' },
+    { type: 'parliament', name: 'Parliament', w: 180, d: 120, h: 34, category: 'public_facilities', layer: 'buildings', color: '#57534e', desc: 'National parliament building with colonnade and assembly dome.' },
+    { type: 'supreme_court', name: 'Supreme Court', w: 120, d: 85, h: 26, category: 'public_facilities', layer: 'buildings', color: '#44403c', desc: 'Supreme court with grand steps, portico, and justice rotunda.' },
+    { type: 'national_archive', name: 'National Archive', w: 100, d: 75, h: 18, category: 'public_facilities', layer: 'buildings', color: '#4b5563', desc: 'Climate-controlled national records archive and reading rooms.' },
+    { type: 'youth_center', name: 'Youth Center', w: 55, d: 40, h: 9, category: 'public_facilities', layer: 'buildings', color: '#0891b2', desc: 'Youth recreation center with indoor courts and study rooms.' },
+    { type: 'senior_center', name: 'Senior Center', w: 60, d: 45, h: 8, category: 'public_facilities', layer: 'buildings', color: '#0f766e', desc: 'Community senior center with therapy garden and dining hall.' },
   ],
 
   parks_recreation: [
@@ -112,6 +136,12 @@ const ASSET_CATALOG = {
     { type: 'zoo', name: 'Zoo', w: 240, d: 170, h: 8, category: 'parks_recreation', layer: 'green', color: '#166534', desc: 'Zoological park with animal habitats and pedestrian walkways.' },
     { type: 'amphitheater', name: 'Amphitheater', w: 85, d: 70, h: 8, category: 'parks_recreation', layer: 'buildings', color: '#475569', desc: 'Open-air tiered hillside amphitheater for concert performances.' },
     { type: 'campsite', name: 'Campsite', w: 90, d: 70, h: 2, category: 'parks_recreation', layer: 'green', color: '#14532d', desc: 'Eco outdoor camping ground with tent pads and fire pits.' },
+    { type: 'water_park', name: 'Water Park', w: 140, d: 100, h: 6, category: 'parks_recreation', layer: 'water', color: '#0284c7', desc: 'Family water park with slides, wave pool, and lazy river.' },
+    { type: 'dog_park', name: 'Dog Park', w: 60, d: 45, h: 0, category: 'parks_recreation', layer: 'green', color: '#4d7c0f', desc: 'Fenced off-leash dog park with agility course and shade trees.' },
+    { type: 'greenhouse', name: 'Greenhouse', w: 80, d: 40, h: 12, category: 'parks_recreation', layer: 'green', color: '#15803d', desc: 'Glass botanical greenhouse with tropical plant collections.' },
+    { type: 'outdoor_theater', name: 'Outdoor Theater', w: 110, d: 85, h: 4, category: 'parks_recreation', layer: 'green', color: '#3f6212', desc: 'Terraced open-air theater with a covered stage.' },
+    { type: 'marina', name: 'Marina', w: 120, d: 90, h: 2, category: 'parks_recreation', layer: 'water', color: '#0369a1', desc: 'Recreational marina with floating docks and moored yachts.' },
+    { type: 'picnic_grove', name: 'Picnic Grove', w: 90, d: 70, h: 1, category: 'parks_recreation', layer: 'green', color: '#166534', desc: 'Shaded picnic grove with tables, grills, and walking paths.' },
   ],
 
   infrastructure: [
@@ -147,6 +177,10 @@ const ASSET_CATALOG = {
     { type: 'trash_bin', name: 'Trash Bin', w: 1.5, d: 1.5, h: 1.2, category: 'infrastructure', layer: 'decorations', color: '#15803d', desc: 'Municipal dual-stream public recycling and waste bin.' },
     { type: 'hydrant', name: 'Fire Hydrant', w: 1, d: 1, h: 1, category: 'infrastructure', layer: 'utilities', color: '#dc2626', desc: 'High-pressure municipal cast iron fire hydrant.' },
     { type: 'bollard', name: 'Bollard', w: 1, d: 1, h: 1, category: 'infrastructure', layer: 'decorations', color: '#64748b', desc: 'Stainless steel crash-rated pedestrian safety bollard.' },
+    { type: 'monorail', name: 'Monorail', w: 400, d: 10, h: 8, category: 'infrastructure', layer: 'roads', color: '#0284c7', desc: 'Elevated monorail guideway with stations and support piers.' },
+    { type: 'tram_line', name: 'Tram Line', w: 350, d: 7, h: 0, category: 'infrastructure', layer: 'roads', color: '#ca8a04', desc: 'Street-running light rail tram line with overhead catenary.' },
+    { type: 'water_tower', name: 'Water Tower', w: 24, d: 24, h: 38, category: 'infrastructure', layer: 'utilities', color: '#94a3b8', desc: 'Elevated municipal water storage tower with access ladder.' },
+    { type: 'solar_canopy', name: 'Solar Canopy', w: 90, d: 40, h: 4, category: 'infrastructure', layer: 'utilities', color: '#1e3a8a', desc: 'Photovoltaic solar canopy providing shade over parking or plazas.' },
   ]
 };
 
@@ -155,6 +189,25 @@ const ASSET_TYPE_MAP = {};
 Object.values(ASSET_CATALOG).flat().forEach(item => {
   ASSET_TYPE_MAP[item.type] = item;
 });
+
+// Rounded-rect path helper (fallback for browsers without ctx.roundRect)
+function addRoundRectPath(c, x, y, w, h, r) {
+  const radius = Math.max(0, Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2));
+  if (typeof c.roundRect === 'function') {
+    c.roundRect(x, y, w, h, radius);
+    return;
+  }
+  c.moveTo(x + radius, y);
+  c.lineTo(x + w - radius, y);
+  c.quadraticCurveTo(x + w, y, x + w, y + radius);
+  c.lineTo(x + w, y + h - radius);
+  c.quadraticCurveTo(x + w, y + h, x + w - radius, y + h);
+  c.lineTo(x + radius, y + h);
+  c.quadraticCurveTo(x, y + h, x, y + h - radius);
+  c.lineTo(x, y + radius);
+  c.quadraticCurveTo(x, y, x + radius, y);
+  c.closePath();
+}
 
 // ========================================================
 // 2. STATE & ENGINE CONFIGURATION
@@ -354,6 +407,15 @@ function buildMasterCityPlan() {
   // Water Treatment Clarification Basins (Bottom Center)
   add('water_treatment', 0, 420, 0, 240, 130, 8);
 
+  // --- J. NEW LANDMARK DISTRICT (SHOWCASES THE EXTENDED CATALOG) ---
+  add('convention_center', 700, 80, 0, 200, 120, 26);
+  add('aquarium', 700, 260, 0, 140, 90, 18);
+  add('sports_arena', 160, -420, 0, 170, 140, 38);
+  add('opera_house', 200, 380, 0, 130, 95, 32);
+  add('planetarium', -330, 60, 0, 70, 70, 24);
+  add('tech_campus', -520, 60, 0, 150, 100, 24);
+  add('water_tower', 620, -40, 0, 24, 24, 38);
+
   return list;
 }
 
@@ -368,6 +430,40 @@ function resize2DCanvas() {
 
   canvas2D.width = Math.round(rect.width * dpr);
   canvas2D.height = Math.round(rect.height * dpr);
+}
+
+function updateZoomStatus() {
+  const zoomText = document.getElementById('statusZoomText');
+  if (zoomText) zoomText.innerText = `${Math.round(camera.zoom * 42)}%`;
+}
+
+function fitPlanToView(padding = 0.1) {
+  if (!canvas2D || cityAssets.length === 0) return;
+  const rect = canvas2D.getBoundingClientRect();
+  if (rect.width <= 0 || rect.height <= 0) return;
+
+  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+  cityAssets.forEach(a => {
+    const rad = ((a.rot || 0) * Math.PI) / 180;
+    const cos = Math.abs(Math.cos(rad));
+    const sin = Math.abs(Math.sin(rad));
+    const halfW = (a.w / 2) * cos + (a.d / 2) * sin;
+    const halfD = (a.w / 2) * sin + (a.d / 2) * cos;
+    minX = Math.min(minX, a.x - halfW);
+    maxX = Math.max(maxX, a.x + halfW);
+    minY = Math.min(minY, a.y - halfD);
+    maxY = Math.max(maxY, a.y + halfD);
+  });
+  if (!isFinite(minX)) return;
+
+  const spanX = Math.max(120, maxX - minX);
+  const spanY = Math.max(120, maxY - minY);
+  const zoomX = rect.width / (spanX * (1 + padding));
+  const zoomY = rect.height / (spanY * (1 + padding));
+  camera.zoom = Math.max(camera.minZoom, Math.min(camera.maxZoom, Math.min(zoomX, zoomY)));
+  camera.x = (minX + maxX) / 2;
+  camera.y = (minY + maxY) / 2;
+  updateZoomStatus();
 }
 
 function screenToWorld(sx, sy) {
@@ -475,14 +571,14 @@ function drawMasterGrid(w, h) {
     const s = worldToScreen(x, 0);
     ctx2D.strokeStyle = (x % 200 === 0) ? '#1c2e22' : '#142119';
     ctx2D.beginPath();
-    ctx2D.moveTo(s.x, 0); ctx.lineTo(s.x, h);
+    ctx2D.moveTo(s.x, 0); ctx2D.lineTo(s.x, h);
     ctx2D.stroke();
   }
   for (let y = startY; y <= endY; y += 50) {
     const s = worldToScreen(0, y);
     ctx2D.strokeStyle = (y % 200 === 0) ? '#1c2e22' : '#142119';
     ctx2D.beginPath();
-    ctx2D.moveTo(0, s.y); ctx.lineTo(w, s.y);
+    ctx2D.moveTo(0, s.y); ctx2D.lineTo(w, s.y);
     ctx2D.stroke();
   }
 }
@@ -502,14 +598,14 @@ function drawBlueprintGrid(w, h) {
     const s = worldToScreen(x, 0);
     ctx2D.strokeStyle = (x % 100 === 0) ? 'rgba(56, 189, 248, 0.25)' : 'rgba(56, 189, 248, 0.08)';
     ctx2D.beginPath();
-    ctx2D.moveTo(s.x, 0); ctx.lineTo(s.x, h);
+    ctx2D.moveTo(s.x, 0); ctx2D.lineTo(s.x, h);
     ctx2D.stroke();
   }
   for (let y = startY; y <= endY; y += step) {
     const s = worldToScreen(0, y);
     ctx2D.strokeStyle = (y % 100 === 0) ? 'rgba(56, 189, 248, 0.25)' : 'rgba(56, 189, 248, 0.08)';
     ctx2D.beginPath();
-    ctx2D.moveTo(0, s.y); ctx.lineTo(w, s.y);
+    ctx2D.moveTo(0, s.y); ctx2D.lineTo(w, s.y);
     ctx2D.stroke();
   }
 }
@@ -532,7 +628,7 @@ function drawAsset2D(item, time) {
     const shadowDist = Math.max(3, item.h * camera.zoom * 0.14);
     ctx2D.fillStyle = 'rgba(0, 0, 0, 0.45)';
     ctx2D.beginPath();
-    ctx2D.roundRect(-pw / 2 + shadowDist, -pd / 2 + shadowDist, pw, pd, 4);
+    addRoundRectPath(ctx2D, -pw / 2 + shadowDist, -pd / 2 + shadowDist, pw, pd, 4);
     ctx2D.fill();
   }
 
@@ -547,8 +643,8 @@ function drawAsset2D(item, time) {
     ctx2D.strokeStyle = 'rgba(56, 189, 248, 0.4)';
     ctx2D.lineWidth = 1;
     ctx2D.beginPath();
-    ctx2D.moveTo(-pw / 2, -pd / 2); ctx.lineTo(pw / 2, pd / 2);
-    ctx2D.moveTo(pw / 2, -pd / 2); ctx.lineTo(-pw / 2, pd / 2);
+    ctx2D.moveTo(-pw / 2, -pd / 2); ctx2D.lineTo(pw / 2, pd / 2);
+    ctx2D.moveTo(pw / 2, -pd / 2); ctx2D.lineTo(-pw / 2, pd / 2);
     ctx2D.stroke();
     ctx2D.restore();
     return;
@@ -607,6 +703,27 @@ function drawAsset2D(item, time) {
     case 'botanical_garden':
       drawParkLandscape2D(pw, pd);
       break;
+    case 'convention_center':
+      drawConventionCenter2D(pw, pd);
+      break;
+    case 'sports_arena':
+      drawArena2D(pw, pd);
+      break;
+    case 'planetarium':
+      drawPlanetarium2D(pw, pd);
+      break;
+    case 'aquarium':
+      drawAquarium2D(pw, pd);
+      break;
+    case 'opera_house':
+      drawOperaHouse2D(pw, pd);
+      break;
+    case 'greenhouse':
+      drawGreenhouse2D(pw, pd);
+      break;
+    case 'marina':
+      drawMarina2D(pw, pd);
+      break;
     default:
       drawStandardBuilding2D(pw, pd, item);
       break;
@@ -645,7 +762,7 @@ function drawStadium2D(pw, pd) {
   ctx2D.lineWidth = 1.5;
   ctx2D.strokeRect(-pitchW / 2, -pitchD / 2, pitchW, pitchD);
   ctx2D.beginPath();
-  ctx2D.moveTo(0, -pitchD / 2); ctx.lineTo(0, pitchD / 2);
+  ctx2D.moveTo(0, -pitchD / 2); ctx2D.lineTo(0, pitchD / 2);
   ctx2D.arc(0, 0, pitchD * 0.2, 0, Math.PI * 2);
   ctx2D.stroke();
 }
@@ -696,7 +813,7 @@ function drawSportsField2D(pw, pd) {
   ctx2D.lineWidth = 1.5;
   ctx2D.strokeRect(-pw / 2 + 2, -pd / 2 + 2, pw - 4, pd - 4);
   ctx2D.beginPath();
-  ctx2D.moveTo(0, -pd / 2 + 2); ctx.lineTo(0, pd / 2 - 2);
+  ctx2D.moveTo(0, -pd / 2 + 2); ctx2D.lineTo(0, pd / 2 - 2);
   ctx2D.arc(0, 0, Math.min(pw, pd) * 0.18, 0, Math.PI * 2);
   ctx2D.stroke();
 }
@@ -711,10 +828,17 @@ function drawLake2D(pw, pd, time) {
   ctx2D.lineWidth = 3;
   ctx2D.stroke();
 
-  // Water reflections
-  ctx2D.fillStyle = 'rgba(255, 255, 255, 0.18)';
-  const ripple = Math.sin(time / 700) * (pw * 0.15);
-  ctx2D.fillRect(-pw * 0.25 + ripple, -pd * 0.1, pw * 0.4, pd * 0.2);
+  // Water reflections / gentle ripples
+  const ripple = Math.sin(time / 900) * (pw * 0.04);
+  ctx2D.strokeStyle = 'rgba(255, 255, 255, 0.28)';
+  ctx2D.lineWidth = Math.max(1, Math.min(pw, pd) * 0.018);
+  for (let i = 0; i < 3; i++) {
+    const ry = -pd * 0.18 + i * pd * 0.18;
+    ctx2D.beginPath();
+    ctx2D.moveTo(-pw * 0.3 + ripple, ry);
+    ctx2D.quadraticCurveTo(0, ry - pd * 0.06, pw * 0.3 + ripple, ry);
+    ctx2D.stroke();
+  }
 }
 
 function drawRoad2D(pw, pd, type) {
@@ -730,9 +854,9 @@ function drawRoad2D(pw, pd, type) {
   ctx2D.lineWidth = 1.5;
   ctx2D.beginPath();
   if (pw > pd) {
-    ctx2D.moveTo(-pw / 2, 0); ctx.lineTo(pw / 2, 0);
+    ctx2D.moveTo(-pw / 2, 0); ctx2D.lineTo(pw / 2, 0);
   } else {
-    ctx2D.moveTo(0, -pd / 2); ctx.lineTo(0, pd / 2);
+    ctx2D.moveTo(0, -pd / 2); ctx2D.lineTo(0, pd / 2);
   }
   ctx2D.stroke();
   ctx2D.setLineDash([]);
@@ -845,8 +969,8 @@ function drawResidential2D(pw, pd, item) {
   ctx2D.lineWidth = 1.5;
   ctx2D.strokeRect(-pw / 2, -pd / 2, pw, pd);
   ctx2D.beginPath();
-  ctx2D.moveTo(-pw / 2, -pd / 2); ctx.lineTo(0, 0); ctx.lineTo(pw / 2, -pd / 2);
-  ctx2D.moveTo(-pw / 2, pd / 2); ctx.lineTo(0, 0); ctx.lineTo(pw / 2, pd / 2);
+  ctx2D.moveTo(-pw / 2, -pd / 2); ctx2D.lineTo(0, 0); ctx2D.lineTo(pw / 2, -pd / 2);
+  ctx2D.moveTo(-pw / 2, pd / 2); ctx2D.lineTo(0, 0); ctx2D.lineTo(pw / 2, pd / 2);
   ctx2D.stroke();
 }
 
@@ -906,13 +1030,219 @@ function drawParkLandscape2D(pw, pd) {
   ctx2D.strokeStyle = '#22c55e';
   ctx2D.lineWidth = 1.5;
   ctx2D.strokeRect(-pw / 2 + 2, -pd / 2 + 2, pw - 4, pd - 4);
+
+  // Winding walking path
+  ctx2D.strokeStyle = 'rgba(226, 232, 240, 0.45)';
+  ctx2D.lineWidth = Math.max(1, Math.min(pw, pd) * 0.035);
+  ctx2D.beginPath();
+  ctx2D.moveTo(-pw * 0.36, pd * 0.28);
+  ctx2D.bezierCurveTo(-pw * 0.1, -pd * 0.1, pw * 0.08, pd * 0.3, pw * 0.36, -pd * 0.24);
+  ctx2D.stroke();
+
+  // Deterministic tree canopies
+  const r = Math.max(2, Math.min(pw, pd) * 0.06);
+  for (let i = 0; i < 14; i++) {
+    const tx = (((i * 41 + 17) % 100) / 100 - 0.5) * pw * 0.78;
+    const ty = (((i * 67 + 31) % 100) / 100 - 0.5) * pd * 0.78;
+    ctx2D.fillStyle = i % 3 === 0 ? '#15803d' : (i % 3 === 1 ? '#22c55e' : '#4ade80');
+    ctx2D.beginPath();
+    ctx2D.arc(tx, ty, r * (0.75 + (i % 3) * 0.16), 0, Math.PI * 2);
+    ctx2D.fill();
+    ctx2D.fillStyle = 'rgba(0, 0, 0, 0.18)';
+    ctx2D.beginPath();
+    ctx2D.arc(tx + r * 0.25, ty + r * 0.25, r * 0.55, 0, Math.PI * 2);
+    ctx2D.fill();
+  }
+}
+
+function shadeColor(hex, percent) {
+  let h = (hex || '#475569').replace('#', '');
+  if (h.length === 3) h = h.split('').map(c => c + c).join('');
+  const num = parseInt(h, 16);
+  if (isNaN(num)) return hex || '#475569';
+  let r = (num >> 16) & 255;
+  let g = (num >> 8) & 255;
+  let b = num & 255;
+  const shift = (percent / 100) * 255;
+  r = Math.max(0, Math.min(255, Math.round(r + shift)));
+  g = Math.max(0, Math.min(255, Math.round(g + shift)));
+  b = Math.max(0, Math.min(255, Math.round(b + shift)));
+  return `rgb(${r}, ${g}, ${b})`;
 }
 
 function drawStandardBuilding2D(pw, pd, item) {
-  ctx2D.fillStyle = item.color || '#475569';
+  const base = item.color || '#475569';
+  const grad = ctx2D.createLinearGradient(-pw / 2, -pd / 2, pw / 2, pd / 2);
+  grad.addColorStop(0, shadeColor(base, 20));
+  grad.addColorStop(0.52, base);
+  grad.addColorStop(1, shadeColor(base, -24));
+  ctx2D.fillStyle = grad;
   ctx2D.fillRect(-pw / 2, -pd / 2, pw, pd);
-  ctx2D.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-  ctx2D.strokeRect(-pw / 2, -pd / 2, pw, pd);
+
+  // Roof parapet
+  const inset = Math.max(1, Math.min(pw, pd) * 0.09);
+  ctx2D.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+  ctx2D.lineWidth = 1;
+  ctx2D.strokeRect(-pw / 2 + 1, -pd / 2 + 1, pw - 2, pd - 2);
+
+  // Recessed rooftop field
+  ctx2D.fillStyle = 'rgba(10, 16, 13, 0.22)';
+  ctx2D.fillRect(-pw / 2 + inset, -pd / 2 + inset, Math.max(1, pw - inset * 2), Math.max(1, pd - inset * 2));
+
+  // Rooftop mechanical units / stair cores on mid-size and large buildings
+  if (pw > 24 && pd > 18) {
+    const ux = Math.max(3, pw * 0.16);
+    const uy = Math.max(2.5, pd * 0.2);
+    ctx2D.fillStyle = 'rgba(226, 232, 240, 0.28)';
+    ctx2D.fillRect(-pw * 0.28, -pd * 0.3, ux, uy);
+    ctx2D.fillRect(pw * 0.12, -pd * 0.3, ux * 0.8, uy * 0.8);
+    ctx2D.fillStyle = 'rgba(148, 163, 184, 0.22)';
+    ctx2D.fillRect(-pw * 0.05, pd * 0.05, ux * 1.4, uy);
+  }
+
+  // Edge highlight for a crisper CAD look
+  ctx2D.strokeStyle = 'rgba(255, 255, 255, 0.14)';
+  ctx2D.strokeRect(-pw / 2 + 2, -pd / 2 + 2, Math.max(1, pw - 4), Math.max(1, pd - 4));
+}
+
+function drawConventionCenter2D(pw, pd) {
+  drawStandardBuilding2D(pw, pd, { color: '#0f766e' });
+  // Glazed central atrium
+  const aw = pw * 0.34;
+  const ad = pd * 0.62;
+  const grad = ctx2D.createLinearGradient(-aw / 2, 0, aw / 2, 0);
+  grad.addColorStop(0, '#67e8f9');
+  grad.addColorStop(0.5, '#0ea5e9');
+  grad.addColorStop(1, '#0369a1');
+  ctx2D.fillStyle = grad;
+  ctx2D.fillRect(-aw / 2, -ad / 2, aw, ad);
+  ctx2D.strokeStyle = 'rgba(255,255,255,0.6)';
+  ctx2D.lineWidth = 1;
+  for (let i = 1; i < 6; i++) {
+    ctx2D.beginPath();
+    ctx2D.moveTo(-aw / 2, -ad / 2 + (ad / 6) * i);
+    ctx2D.lineTo(aw / 2, -ad / 2 + (ad / 6) * i);
+    ctx2D.stroke();
+  }
+}
+
+function drawArena2D(pw, pd) {
+  ctx2D.fillStyle = '#1e293b';
+  ctx2D.beginPath();
+  ctx2D.ellipse(0, 0, pw / 2, pd / 2, 0, 0, Math.PI * 2);
+  ctx2D.fill();
+  ctx2D.strokeStyle = '#93c5fd';
+  ctx2D.lineWidth = 2;
+  ctx2D.stroke();
+
+  ctx2D.fillStyle = '#1d4ed8';
+  ctx2D.beginPath();
+  ctx2D.ellipse(0, 0, pw * 0.42, pd * 0.42, 0, 0, Math.PI * 2);
+  ctx2D.fill();
+
+  ctx2D.fillStyle = '#c2410c';
+  ctx2D.fillRect(-pw * 0.24, -pd * 0.17, pw * 0.48, pd * 0.34);
+  ctx2D.strokeStyle = '#ffffff';
+  ctx2D.lineWidth = 1.5;
+  ctx2D.strokeRect(-pw * 0.24, -pd * 0.17, pw * 0.48, pd * 0.34);
+  ctx2D.beginPath();
+  ctx2D.arc(0, 0, pd * 0.11, 0, Math.PI * 2);
+  ctx2D.stroke();
+}
+
+function drawPlanetarium2D(pw, pd) {
+  drawStandardBuilding2D(pw, pd, { color: '#1e3a8a' });
+  const r = Math.min(pw, pd) * 0.3;
+  const grad = ctx2D.createRadialGradient(-r * 0.3, -r * 0.3, 1, 0, 0, r);
+  grad.addColorStop(0, '#e0f2fe');
+  grad.addColorStop(0.55, '#38bdf8');
+  grad.addColorStop(1, '#0c4a6e');
+  ctx2D.fillStyle = grad;
+  ctx2D.beginPath();
+  ctx2D.arc(0, 0, r, 0, Math.PI * 2);
+  ctx2D.fill();
+  ctx2D.strokeStyle = '#ffffff';
+  ctx2D.lineWidth = 1.5;
+  ctx2D.stroke();
+}
+
+function drawAquarium2D(pw, pd) {
+  ctx2D.fillStyle = '#0c4a6e';
+  ctx2D.fillRect(-pw / 2, -pd / 2, pw, pd);
+  const tanks = 3;
+  for (let i = 0; i < tanks; i++) {
+    const tx = -pw * 0.32 + i * pw * 0.32;
+    const tw = pw * 0.24;
+    const grad = ctx2D.createLinearGradient(tx - tw / 2, 0, tx + tw / 2, 0);
+    grad.addColorStop(0, '#0891b2');
+    grad.addColorStop(0.5, '#22d3ee');
+    grad.addColorStop(1, '#0369a1');
+    ctx2D.fillStyle = grad;
+    ctx2D.fillRect(tx - tw / 2, -pd * 0.3, tw, pd * 0.6);
+    ctx2D.strokeStyle = 'rgba(255,255,255,0.65)';
+    ctx2D.lineWidth = 1;
+    ctx2D.strokeRect(tx - tw / 2, -pd * 0.3, tw, pd * 0.6);
+  }
+  ctx2D.fillStyle = '#0e7490';
+  ctx2D.fillRect(-pw * 0.46, -pd * 0.46, pw * 0.12, pd * 0.92);
+}
+
+function drawOperaHouse2D(pw, pd) {
+  ctx2D.fillStyle = '#92400e';
+  ctx2D.fillRect(-pw / 2, -pd / 2, pw, pd);
+  ctx2D.fillStyle = '#f8fafc';
+  for (let i = 0; i < 3; i++) {
+    ctx2D.beginPath();
+    ctx2D.ellipse(-pw * 0.2 + i * pw * 0.2, pd * 0.05, pw * 0.18, pd * 0.36, -0.5, 0, Math.PI * 2);
+    ctx2D.fill();
+    ctx2D.strokeStyle = 'rgba(148, 163, 184, 0.9)';
+    ctx2D.lineWidth = 1;
+    ctx2D.stroke();
+  }
+  ctx2D.fillStyle = '#b45309';
+  ctx2D.fillRect(-pw * 0.48, -pd * 0.48, pw * 0.96, pd * 0.16);
+}
+
+function drawGreenhouse2D(pw, pd) {
+  ctx2D.fillStyle = 'rgba(6, 78, 59, 0.85)';
+  ctx2D.fillRect(-pw / 2, -pd / 2, pw, pd);
+  const grad = ctx2D.createLinearGradient(0, -pd / 2, 0, pd / 2);
+  grad.addColorStop(0, 'rgba(134, 239, 172, 0.65)');
+  grad.addColorStop(1, 'rgba(21, 128, 61, 0.55)');
+  ctx2D.fillStyle = grad;
+  ctx2D.fillRect(-pw * 0.44, -pd * 0.38, pw * 0.88, pd * 0.76);
+  ctx2D.strokeStyle = 'rgba(255,255,255,0.55)';
+  ctx2D.lineWidth = 1;
+  for (let i = 1; i < 8; i++) {
+    ctx2D.beginPath();
+    ctx2D.moveTo(-pw * 0.44 + (pw * 0.88 / 8) * i, -pd * 0.38);
+    ctx2D.lineTo(-pw * 0.44 + (pw * 0.88 / 8) * i, pd * 0.38);
+    ctx2D.stroke();
+  }
+  for (let i = 1; i < 4; i++) {
+    ctx2D.beginPath();
+    ctx2D.moveTo(-pw * 0.44, -pd * 0.38 + (pd * 0.76 / 4) * i);
+    ctx2D.lineTo(pw * 0.44, -pd * 0.38 + (pd * 0.76 / 4) * i);
+    ctx2D.stroke();
+  }
+}
+
+function drawMarina2D(pw, pd) {
+  ctx2D.fillStyle = '#075985';
+  ctx2D.fillRect(-pw / 2, -pd / 2, pw, pd);
+  ctx2D.strokeStyle = '#78350f';
+  ctx2D.lineWidth = 2;
+  for (let i = 0; i < 4; i++) {
+    const dy = -pd * 0.32 + i * pd * 0.22;
+    ctx2D.beginPath();
+    ctx2D.moveTo(-pw * 0.42, dy);
+    ctx2D.lineTo(pw * 0.42, dy);
+    ctx2D.stroke();
+    for (let j = 0; j < 6; j++) {
+      ctx2D.fillStyle = ['#f8fafc', '#fca5a5', '#93c5fd', '#fde68a'][(i + j) % 4];
+      ctx2D.fillRect(-pw * 0.36 + j * pw * 0.14, dy - 3, pw * 0.055, 6);
+    }
+  }
 }
 
 // --------------------------------------------------------
@@ -961,7 +1291,7 @@ function drawAssetSelection2D(item) {
   // Width Label Badge
   ctx2D.fillStyle = '#f59e0b';
   ctx2D.beginPath();
-  ctx2D.roundRect(-28, yLine - 9, 56, 18, 6);
+  addRoundRectPath(ctx2D, -28, yLine - 9, 56, 18, 6);
   ctx2D.fill();
   ctx2D.fillStyle = '#0f172a';
   ctx2D.font = 'bold 10px monospace';
@@ -991,7 +1321,7 @@ function drawSmartRulerOverlay() {
 
   ctx2D.fillStyle = '#06b6d4';
   ctx2D.beginPath();
-  ctx2D.roundRect(midX - 35, midY - 12, 70, 24, 6);
+  addRoundRectPath(ctx2D, midX - 35, midY - 12, 70, 24, 6);
   ctx2D.fill();
   ctx2D.fillStyle = '#090e0b';
   ctx2D.font = 'bold 11px monospace';
@@ -1003,98 +1333,439 @@ function drawSmartRulerOverlay() {
 // ========================================================
 // 5. 3D WEBGL THREE.JS ENGINE & PIP REALTIME PREVIEW
 // ========================================================
+let threeInitFailed = false;
+let threeAnimationStarted = false;
+
+function show3DUnavailable(reason) {
+  const host = document.getElementById('threeContainer');
+  if (host) {
+    host.innerHTML = `
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;background:#0b120d;">
+        <div style="max-width:420px;font-family:inherit;">
+          <div style="width:48px;height:48px;margin:0 auto 14px;border-radius:14px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.4);display:flex;align-items:center;justify-content:center;color:#fbbf24;font-size:24px;">!</div>
+          <h3 style="color:#f8fafc;font-size:15px;font-weight:700;margin:0 0 6px;">3D view unavailable</h3>
+          <p style="color:#94a3b8;font-size:12px;line-height:1.5;margin:0;">${reason || 'WebGL could not be initialised in this browser.'}<br>The 2D plan, blueprint and exports still work normally.</p>
+        </div>
+      </div>`;
+  }
+}
+
+function resizeThreeRenderer() {
+  if (!threeRenderer || !threeCamera) return;
+  const mainHost = document.getElementById('viewportMainContainer');
+  const w = Math.max(1, mainHost ? mainHost.clientWidth : window.innerWidth);
+  const h = Math.max(1, mainHost ? mainHost.clientHeight : window.innerHeight);
+  threeRenderer.setSize(w, h);
+  threeCamera.aspect = w / h;
+  threeCamera.updateProjectionMatrix();
+
+  const pipHost = document.getElementById('pipThreeCanvasContainer');
+  if (pipRenderer && pipCamera && pipHost) {
+    const pw = Math.max(1, pipHost.clientWidth);
+    const ph = Math.max(1, pipHost.clientHeight);
+    pipRenderer.setSize(pw, ph);
+    pipCamera.aspect = pw / ph;
+    pipCamera.updateProjectionMatrix();
+  }
+}
+
+function addGroundAndGrid(scene) {
+  const groundGeo = new THREE.PlaneGeometry(6000, 6000);
+  const groundMat = new THREE.MeshStandardMaterial({ color: 0x0b120d, roughness: 0.95, metalness: 0.0 });
+  const groundMesh = new THREE.Mesh(groundGeo, groundMat);
+  groundMesh.rotation.x = -Math.PI / 2;
+  groundMesh.position.y = -0.15;
+  groundMesh.receiveShadow = true;
+  scene.add(groundMesh);
+
+  const grid = new THREE.GridHelper(4000, 80, 0x21402d, 0x14251a);
+  grid.position.y = 0.02;
+  grid.material.transparent = true;
+  grid.material.opacity = 0.55;
+  scene.add(grid);
+}
+
 function initThreeJSEngine() {
   const threeHost = document.getElementById('threeContainer');
   const pipHost = document.getElementById('pipThreeCanvasContainer');
-  if (!threeHost || !pipHost) return;
+  if (!threeHost || !pipHost || threeInitFailed) return;
 
-  // --- A. Main Fullscreen 3D Scene ---
-  threeScene = new THREE.Scene();
-  threeScene.background = new THREE.Color(0x0e1610);
-  threeScene.fog = new THREE.FogExp2(0x0e1610, 0.0006);
-
-  threeCamera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 4000);
-  threeCamera.position.set(0, 450, 750);
-
-  threeRenderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
-  threeRenderer.setSize(threeHost.clientWidth, threeHost.clientHeight);
-  threeRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  threeRenderer.shadowMap.enabled = true;
-  threeRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  threeHost.appendChild(threeRenderer.domElement);
-
-  threeControls = new THREE.OrbitControls(threeCamera, threeRenderer.domElement);
-  threeControls.enableDamping = true;
-  threeControls.dampingFactor = 0.05;
-  threeControls.maxPolarAngle = Math.PI / 2 - 0.02;
-
-  // Lighting
-  setupLighting(threeScene);
-
-  // Ground plane
-  const groundGeo = new THREE.PlaneGeometry(3000, 3000);
-  const groundMat = new THREE.MeshStandardMaterial({ color: 0x111c14, roughness: 0.9 });
-  const groundMesh = new THREE.Mesh(groundGeo, groundMat);
-  groundMesh.rotation.x = -Math.PI / 2;
-  groundMesh.receiveShadow = true;
-  threeScene.add(groundMesh);
-
-  // --- B. PiP Miniature 3D Scene ---
-  pipScene = new THREE.Scene();
-  pipScene.background = new THREE.Color(0x0a100c);
-  pipCamera = new THREE.PerspectiveCamera(40, pipHost.clientWidth / pipHost.clientHeight, 1, 3000);
-  pipCamera.position.set(-300, 380, 500);
-  pipCamera.lookAt(-100, 0, -100);
-
-  pipRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  pipRenderer.setSize(pipHost.clientWidth, pipHost.clientHeight);
-  pipRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-  pipHost.appendChild(pipRenderer.domElement);
-
-  setupLighting(pipScene);
-
-  // Sync city meshes to 3D scenes
-  rebuild3DCityMeshes();
-
-  // Animation Loop for 3D
-  function animate3D() {
-    requestAnimationFrame(animate3D);
-
-    if (currentMode === '3d' && threeControls) {
-      threeControls.update();
-      threeRenderer.render(threeScene, threeCamera);
-    } else if (currentMode === 'walk' && walkControls.active) {
-      updateWalkMode();
-      threeRenderer.render(threeScene, threeCamera);
-    }
-
-    // Always render PiP preview with subtle orbital rotation
-    if (pipRenderer && pipScene && pipCamera) {
-      pipCamera.position.x = -320 + Math.sin(Date.now() * 0.0003) * 60;
-      pipCamera.lookAt(-150, 0, -150);
-      pipRenderer.render(pipScene, pipCamera);
-    }
+  if (typeof THREE === 'undefined') {
+    threeInitFailed = true;
+    show3DUnavailable('The 3D engine library could not be loaded.');
+    return;
   }
-  requestAnimationFrame(animate3D);
+
+  try {
+    // --- A. Main Fullscreen 3D Scene ---
+    threeScene = new THREE.Scene();
+    threeScene.background = new THREE.Color(0x0e1610);
+    threeScene.fog = new THREE.FogExp2(0x0e1610, 0.00045);
+
+    const mainHost = document.getElementById('viewportMainContainer');
+    const startW = Math.max(1, mainHost ? mainHost.clientWidth : window.innerWidth);
+    const startH = Math.max(1, mainHost ? mainHost.clientHeight : window.innerHeight);
+
+    threeCamera = new THREE.PerspectiveCamera(45, startW / startH, 1, 6000);
+    threeCamera.position.set(0, 850, 1250);
+
+    threeRenderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+    threeRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    threeRenderer.setSize(startW, startH);
+    threeRenderer.shadowMap.enabled = true;
+    threeRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    if ('outputEncoding' in threeRenderer) threeRenderer.outputEncoding = THREE.sRGBEncoding;
+    if ('toneMapping' in threeRenderer) {
+      threeRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+      threeRenderer.toneMappingExposure = 0.95;
+    }
+    threeHost.appendChild(threeRenderer.domElement);
+
+    threeControls = new THREE.OrbitControls(threeCamera, threeRenderer.domElement);
+    threeControls.enableDamping = true;
+    threeControls.dampingFactor = 0.06;
+    threeControls.maxPolarAngle = Math.PI / 2 - 0.03;
+    threeControls.minDistance = 60;
+    threeControls.maxDistance = 2600;
+    threeControls.target.set(0, 0, 0);
+    threeControls.update();
+
+    setupLighting(threeScene);
+    addGroundAndGrid(threeScene);
+
+    // --- B. PiP Miniature 3D Scene ---
+    const pipW = Math.max(1, pipHost.clientWidth);
+    const pipH = Math.max(1, pipHost.clientHeight);
+    pipScene = new THREE.Scene();
+    pipScene.background = new THREE.Color(0x0a100c);
+    pipCamera = new THREE.PerspectiveCamera(42, pipW / pipH, 1, 4000);
+    pipCamera.position.set(-540, 500, 700);
+    pipCamera.lookAt(0, 0, 0);
+
+    pipRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    pipRenderer.setSize(pipW, pipH);
+    pipRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    if ('outputEncoding' in pipRenderer) pipRenderer.outputEncoding = THREE.sRGBEncoding;
+    pipHost.appendChild(pipRenderer.domElement);
+
+    setupLighting(pipScene);
+    addGroundAndGrid(pipScene);
+
+    // Walk-mode mouse-look (pointer lock on click)
+    threeRenderer.domElement.addEventListener('click', () => {
+      if (currentMode === 'walk' && document.pointerLockElement !== threeRenderer.domElement) {
+        threeRenderer.domElement.requestPointerLock?.();
+      }
+    });
+    document.addEventListener('mousemove', (e) => {
+      if (currentMode !== 'walk') return;
+      if (document.pointerLockElement !== threeRenderer.domElement) return;
+      walkControls.rot.yaw -= (e.movementX || 0) * 0.0022;
+      walkControls.rot.pitch -= (e.movementY || 0) * 0.0022;
+      walkControls.rot.pitch = Math.max(-1.35, Math.min(1.35, walkControls.rot.pitch));
+      updateWalkMode();
+    });
+
+    // Sync city meshes to 3D scenes
+    rebuild3DCityMeshes();
+    resizeThreeRenderer();
+
+    // Animation Loop for 3D
+    if (!threeAnimationStarted) {
+      threeAnimationStarted = true;
+      const animate3D = () => {
+        requestAnimationFrame(animate3D);
+
+        if (currentMode === '3d' && threeControls && threeRenderer) {
+          threeControls.update();
+          threeRenderer.render(threeScene, threeCamera);
+        } else if (currentMode === 'walk' && walkControls.active && threeRenderer) {
+          updateWalkMode();
+          threeRenderer.render(threeScene, threeCamera);
+        }
+
+        // PiP preview: only pay the GPU cost while it is visible
+        const pipCard = document.getElementById('pip3DPreview');
+        const pipVisible = pipCard && !pipCard.classList.contains('hidden');
+        if (pipVisible && pipRenderer && pipScene && pipCamera) {
+          const t = Date.now() * 0.0003;
+          pipCamera.position.x = -540 + Math.sin(t) * 90;
+          pipCamera.position.z = 700 + Math.cos(t) * 70;
+          pipCamera.lookAt(0, 0, 0);
+          pipRenderer.render(pipScene, pipCamera);
+        }
+      };
+      requestAnimationFrame(animate3D);
+    }
+  } catch (err) {
+    console.error('3D engine initialisation failed:', err);
+    threeInitFailed = true;
+    show3DUnavailable('WebGL could not be initialised in this browser.');
+  }
 }
 
 function setupLighting(scene) {
-  const hemi = new THREE.HemisphereLight(0xffffff, 0x1e2920, 0.6);
+  const hemi = new THREE.HemisphereLight(0xbfdcff, 0x1c2718, 0.55);
   scene.add(hemi);
 
-  const sun = new THREE.DirectionalLight(0xfff5ea, 1.2);
-  sun.position.set(400, 600, 300);
+  const ambient = new THREE.AmbientLight(0xffffff, 0.16);
+  scene.add(ambient);
+
+  const sun = new THREE.DirectionalLight(0xfff3df, 0.82);
+  sun.position.set(520, 760, 420);
   sun.castShadow = true;
   sun.shadow.mapSize.width = 2048;
   sun.shadow.mapSize.height = 2048;
-  sun.shadow.camera.near = 100;
-  sun.shadow.camera.far = 1800;
-  const d = 800;
+  sun.shadow.camera.near = 120;
+  sun.shadow.camera.far = 2600;
+  const d = 1100;
   sun.shadow.camera.left = -d;
   sun.shadow.camera.right = d;
   sun.shadow.camera.top = d;
   sun.shadow.camera.bottom = -d;
+  sun.shadow.bias = -0.0004;
   scene.add(sun);
+
+  const fill = new THREE.DirectionalLight(0x8fc8ff, 0.22);
+  fill.position.set(-500, 320, -420);
+  scene.add(fill);
+}
+
+// ----- Shared 3D resources (created lazily, reused by every building) -----
+let sharedWindowTexture = null;
+const buildingMaterialCache = new Map();
+const roofMaterialCache = new Map();
+let utilityMaterial = null;
+
+function getSharedWindowTexture() {
+  if (sharedWindowTexture) return sharedWindowTexture;
+  const c = document.createElement('canvas');
+  c.width = 64;
+  c.height = 128;
+  const g = c.getContext('2d');
+  g.fillStyle = '#18242d';
+  g.fillRect(0, 0, c.width, c.height);
+  for (let y = 5; y < 122; y += 11) {
+    for (let x = 4; x < 60; x += 13) {
+      const lit = ((x * 7 + y * 5) % 11) < 3;
+      g.fillStyle = lit ? '#f0c46a' : '#5f849b';
+      g.fillRect(x, y, 8, 6);
+      g.fillStyle = 'rgba(255,255,255,0.12)';
+      g.fillRect(x, y, 8, 1);
+    }
+  }
+  g.fillStyle = 'rgba(0,0,0,0.35)';
+  g.fillRect(0, 0, c.width, 2);
+  const tex = new THREE.CanvasTexture(c);
+  if ('encoding' in tex) tex.encoding = THREE.sRGBEncoding;
+  tex.wrapS = THREE.RepeatWrapping;
+  tex.wrapT = THREE.RepeatWrapping;
+  sharedWindowTexture = tex;
+  return tex;
+}
+
+function getBuildingMaterial(colorHex, metalness = 0.12, roughness = 0.6) {
+  const key = `${colorHex}-${metalness}-${roughness}`;
+  if (buildingMaterialCache.has(key)) return buildingMaterialCache.get(key);
+  const mat = new THREE.MeshStandardMaterial({
+    color: colorHex,
+    map: getSharedWindowTexture(),
+    metalness,
+    roughness
+  });
+  buildingMaterialCache.set(key, mat);
+  return mat;
+}
+
+function getRoofMaterial(colorHex) {
+  const key = colorHex || 0x4b5563;
+  if (roofMaterialCache.has(key)) return roofMaterialCache.get(key);
+  let c;
+  try {
+    c = new THREE.Color(key).multiplyScalar(0.62);
+  } catch (e) {
+    c = new THREE.Color(0x4b5563);
+  }
+  const mat = new THREE.MeshStandardMaterial({ color: c, roughness: 0.88, metalness: 0.04 });
+  roofMaterialCache.set(key, mat);
+  return mat;
+}
+
+function getUtilityMaterial() {
+  if (!utilityMaterial) {
+    utilityMaterial = new THREE.MeshStandardMaterial({ color: 0x64748b, roughness: 0.75, metalness: 0.2 });
+  }
+  return utilityMaterial;
+}
+
+function createStadium3D(item, colorHex) {
+  const group = new THREE.Group();
+  const outer = new THREE.Shape();
+  outer.absarc(0, 0, 1, 0, Math.PI * 2, false);
+  const hole = new THREE.Path();
+  hole.absarc(0, 0, 0.6, 0, Math.PI * 2, true);
+  outer.holes.push(hole);
+  const bowlGeo = new THREE.ExtrudeGeometry(outer, { depth: 1, bevelEnabled: false, curveSegments: 40 });
+  bowlGeo.rotateX(-Math.PI / 2);
+  const bowlMat = new THREE.MeshStandardMaterial({ color: colorHex, roughness: 0.55, metalness: 0.15 });
+  const bowl = new THREE.Mesh(bowlGeo, bowlMat);
+  bowl.scale.set(item.w / 2, item.h, item.d / 2);
+  bowl.castShadow = true;
+  bowl.receiveShadow = true;
+  group.add(bowl);
+
+  const fieldGeo = new THREE.CylinderGeometry(0.585, 0.585, 0.5, 48);
+  const fieldMat = new THREE.MeshStandardMaterial({ color: 0x15803d, roughness: 0.95 });
+  const field = new THREE.Mesh(fieldGeo, fieldMat);
+  field.scale.set(item.w / 2, 1, item.d / 2);
+  field.position.y = 0.32;
+  field.receiveShadow = true;
+  group.add(field);
+  return group;
+}
+
+function createTower3D(item, colorHex) {
+  const group = new THREE.Group();
+  const towerMat = new THREE.MeshStandardMaterial({ color: colorHex, roughness: 0.45, metalness: 0.4 });
+  const radius = item.type === 'wind_turbine' ? Math.max(1.6, item.w * 0.055) : Math.max(1, Math.min(item.w, item.d) / 2);
+  const bodyH = item.type === 'wind_turbine' ? item.h * 0.82 : item.h;
+  const body = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius * 1.12, bodyH, 16), towerMat);
+  body.position.y = bodyH / 2;
+  body.castShadow = true;
+  body.receiveShadow = true;
+  group.add(body);
+
+  if (item.type === 'wind_turbine') {
+    const nacelle = new THREE.Mesh(new THREE.BoxGeometry(radius * 4, radius * 2.2, radius * 2.4), getUtilityMaterial());
+    nacelle.position.y = bodyH + radius * 0.6;
+    group.add(nacelle);
+    for (let i = 0; i < 3; i++) {
+      const blade = new THREE.Mesh(new THREE.BoxGeometry(radius * 1.1, item.h * 0.34, 0.8), towerMat);
+      blade.position.y = bodyH + radius * 0.6;
+      blade.rotation.z = (i * Math.PI * 2) / 3;
+      blade.translateY(item.h * 0.17);
+      group.add(blade);
+    }
+  } else if (item.type === 'water_tower') {
+    const tank = new THREE.Mesh(new THREE.CylinderGeometry(item.w / 2.4, item.w / 2.4, item.h * 0.22, 18), getUtilityMaterial());
+    tank.position.y = item.h * 0.88;
+    group.add(tank);
+  }
+  return group;
+}
+
+let treeGeometry = null;
+let treeMaterial = null;
+
+function addTreeCluster(group, item) {
+  const treeParks = ['park', 'botanical_garden', 'golf_course', 'zoo', 'picnic_grove', 'dog_park', 'campsite'];
+  if (!treeParks.includes(item.type)) return;
+  if (!treeGeometry) treeGeometry = new THREE.ConeGeometry(4.2, 13, 6);
+  if (!treeMaterial) treeMaterial = new THREE.MeshStandardMaterial({ color: 0x1f6b3a, roughness: 0.95 });
+  for (let i = 0; i < 10; i++) {
+    const tree = new THREE.Mesh(treeGeometry, treeMaterial);
+    const gx = ((i * 37 + 13) % 100) / 100 - 0.5;
+    const gz = ((i * 53 + 29) % 100) / 100 - 0.5;
+    tree.position.set(gx * item.w * 0.82, 6.5, gz * item.d * 0.82);
+    tree.castShadow = true;
+    group.add(tree);
+  }
+}
+
+function buildAsset3D(item) {
+  const group = new THREE.Group();
+  const colorHex = parseInt((item.color || '#455a64').replace('#', '0x'), 16) || 0x455a64;
+  const isFlat = item.h <= 0.6;
+  const isWater = item.layer === 'water';
+  const isGreen = item.layer === 'green';
+  const isRoad = item.layer === 'roads';
+
+  // Flat ground features: roads, parks, lakes, plazas, parking, etc.
+  if (isFlat) {
+    const mat = new THREE.MeshStandardMaterial({
+      color: colorHex,
+      roughness: isWater ? 0.18 : (isRoad ? 0.95 : 0.9),
+      metalness: isWater ? 0.35 : 0.02,
+      transparent: isWater,
+      opacity: isWater ? 0.92 : 1
+    });
+    const circular = ['lake_pond', 'roundabout', 'fountain', 'olympic_pool', 'water_park', 'marina'].includes(item.type);
+    let mesh;
+    if (circular) {
+      mesh = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.35, 40), mat);
+      mesh.scale.set(item.w, 1, item.d);
+      mesh.position.y = 0.18;
+    } else {
+      mesh = new THREE.Mesh(new THREE.BoxGeometry(item.w, 0.28, item.d), mat);
+      mesh.position.y = 0.14;
+    }
+    mesh.receiveShadow = true;
+    group.add(mesh);
+    if (isGreen) addTreeCluster(group, item);
+    return group;
+  }
+
+  const h = item.h;
+  const w = item.w;
+  const d = item.d;
+
+  if (item.type === 'modern_stadium' || item.type === 'sports_arena') {
+    group.add(createStadium3D(item, colorHex));
+  } else if (['wind_turbine', 'water_tower', 'grain_silo', 'cell_tower', 'power_pylon', 'chiller_plant'].includes(item.type)) {
+    group.add(createTower3D(item, colorHex));
+  } else {
+    const glassy = ['skyscraper', 'office', 'hotel', 'hotel_resort', 'apartment', 'tech_campus', 'convention_center', 'aquarium'].includes(item.type);
+    const mat = getBuildingMaterial(colorHex, glassy ? 0.55 : 0.12, glassy ? 0.28 : 0.62);
+    const body = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+    body.position.y = h / 2;
+    body.castShadow = true;
+    body.receiveShadow = true;
+    group.add(body);
+
+    // Roof slab
+    const capH = Math.max(0.6, Math.min(2.2, h * 0.03));
+    const cap = new THREE.Mesh(new THREE.BoxGeometry(w * 1.02, capH, d * 1.02), getRoofMaterial(colorHex));
+    cap.position.y = h + capH / 2;
+    cap.castShadow = true;
+    group.add(cap);
+
+    // Rooftop mechanical equipment
+    if (w > 28 && d > 22 && h < 120) {
+      const unit = new THREE.Mesh(
+        new THREE.BoxGeometry(w * 0.16, Math.max(1.2, h * 0.035), d * 0.16),
+        getUtilityMaterial()
+      );
+      unit.position.set(w * 0.16, h + capH + Math.max(0.6, h * 0.018), -d * 0.16);
+      unit.castShadow = true;
+      group.add(unit);
+    }
+
+    // Antenna / crown for tall towers
+    if (h > 60) {
+      const mastH = Math.max(8, h * 0.13);
+      const mast = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.7, 1.1, mastH, 8),
+        new THREE.MeshStandardMaterial({ color: 0xcbd5e1, roughness: 0.4, metalness: 0.7 })
+      );
+      mast.position.y = h + capH + mastH / 2;
+      mast.castShadow = true;
+      group.add(mast);
+    }
+
+    // Dome accents for civic / religious / science landmarks
+    if (['mosque', 'planetarium', 'university', 'civic_center', 'parliament', 'supreme_court'].includes(item.type)) {
+      const domeR = Math.min(w, d) * 0.26;
+      const dome = new THREE.Mesh(
+        new THREE.SphereGeometry(domeR, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2),
+        new THREE.MeshStandardMaterial({ color: 0xd4a437, roughness: 0.35, metalness: 0.55 })
+      );
+      dome.position.y = h + capH;
+      dome.castShadow = true;
+      group.add(dome);
+    }
+  }
+
+  return group;
 }
 
 function rebuild3DCityMeshes() {
@@ -1107,61 +1778,51 @@ function rebuild3DCityMeshes() {
   pipMeshMap.clear();
 
   cityAssets.forEach(item => {
-    if (item.h <= 0) return; // Skip flat ground items in 3D block generation
+    const group3D = buildAsset3D(item);
+    group3D.position.set(item.x, Math.max(0, item.elevation || 0), item.y);
+    group3D.rotation.y = -((item.rot || 0) * Math.PI) / 180;
+    group3D.userData = { assetId: item.id };
+    group3D.traverse(obj => {
+      if (obj.isMesh) {
+        obj.castShadow = true;
+        obj.receiveShadow = true;
+      }
+    });
 
-    let geo, mat;
-    const colorHex = parseInt((item.color || '#455a64').replace('#', '0x'), 16);
+    threeScene.add(group3D);
+    threeMeshMap.set(item.id, group3D);
 
-    if (item.type === 'modern_stadium') {
-      geo = new THREE.CylinderGeometry(item.w / 2, item.w / 2 * 0.9, item.h, 32);
-      mat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, roughness: 0.4 });
-    } else if (item.type === 'university') {
-      geo = new THREE.BoxGeometry(item.w, item.h, item.d);
-      mat = new THREE.MeshStandardMaterial({ color: 0x4a6572, roughness: 0.6 });
-    } else if (item.type === 'skyscraper' || item.type === 'office') {
-      geo = new THREE.BoxGeometry(item.w, item.h, item.d);
-      mat = new THREE.MeshStandardMaterial({ color: 0x0284c7, metalness: 0.6, roughness: 0.2 });
-    } else {
-      geo = new THREE.BoxGeometry(item.w, item.h, item.d);
-      mat = new THREE.MeshStandardMaterial({ color: colorHex, roughness: 0.6 });
-    }
-
-    const mesh = new THREE.Mesh(geo, mat);
-    mesh.position.set(item.x, item.h / 2, item.y);
-    mesh.rotation.y = (item.rot * Math.PI) / 180;
-    mesh.castShadow = true;
-    mesh.receiveShadow = true;
-    mesh.userData = { assetId: item.id };
-
-    threeScene.add(mesh);
-    threeMeshMap.set(item.id, mesh);
-
-    // Also add to PiP scene
-    const pipMesh = mesh.clone();
-    pipScene.add(pipMesh);
-    pipMeshMap.set(item.id, pipMesh);
+    // Mirror into the PiP preview scene (shared geometry + materials)
+    const pipGroup = group3D.clone();
+    pipScene.add(pipGroup);
+    pipMeshMap.set(item.id, pipGroup);
   });
 }
 
 function updateWalkMode() {
-  const speed = 1.6;
+  const now = performance.now();
+  if (!walkControls.lastTime) walkControls.lastTime = now;
+  const dt = Math.min(0.1, (now - walkControls.lastTime) / 1000);
+  walkControls.lastTime = now;
+
+  const speed = 14; // metres per second
   const rad = walkControls.rot.yaw;
 
   if (walkControls.keys.w) {
-    walkControls.pos.x -= Math.sin(rad) * speed;
-    walkControls.pos.z -= Math.cos(rad) * speed;
+    walkControls.pos.x -= Math.sin(rad) * speed * dt;
+    walkControls.pos.z -= Math.cos(rad) * speed * dt;
   }
   if (walkControls.keys.s) {
-    walkControls.pos.x += Math.sin(rad) * speed;
-    walkControls.pos.z += Math.cos(rad) * speed;
+    walkControls.pos.x += Math.sin(rad) * speed * dt;
+    walkControls.pos.z += Math.cos(rad) * speed * dt;
   }
   if (walkControls.keys.a) {
-    walkControls.pos.x -= Math.cos(rad) * speed;
-    walkControls.pos.z += Math.sin(rad) * speed;
+    walkControls.pos.x -= Math.cos(rad) * speed * dt;
+    walkControls.pos.z += Math.sin(rad) * speed * dt;
   }
   if (walkControls.keys.d) {
-    walkControls.pos.x += Math.cos(rad) * speed;
-    walkControls.pos.z -= Math.sin(rad) * speed;
+    walkControls.pos.x += Math.cos(rad) * speed * dt;
+    walkControls.pos.z -= Math.sin(rad) * speed * dt;
   }
 
   threeCamera.position.set(walkControls.pos.x, 2.0, walkControls.pos.z);
@@ -1192,18 +1853,34 @@ function switchViewMode(mode) {
   const threeHost = document.getElementById('threeContainer');
   const crosshair = document.getElementById('walkCrosshair');
 
-  if (mode === '3d') {
+  if (mode === '3d' || mode === 'walk') {
+    // Lazily initialise on first use (also retries if the canvas was 0×0 earlier)
+    if (!threeRenderer && !threeInitFailed) initThreeJSEngine();
     threeHost.classList.remove('hidden');
-    crosshair.style.display = 'none';
-    threeControls.enabled = true;
-    walkControls.active = false;
-  } else if (mode === 'walk') {
-    threeHost.classList.remove('hidden');
-    crosshair.style.display = 'block';
-    threeControls.enabled = false;
-    walkControls.active = true;
+    resizeThreeRenderer();
   } else {
     threeHost.classList.add('hidden');
+    if (document.pointerLockElement && document.exitPointerLock) document.exitPointerLock();
+  }
+
+  if (mode === '3d') {
+    crosshair.style.display = 'none';
+    if (threeControls) threeControls.enabled = true;
+    walkControls.active = false;
+  } else if (mode === 'walk') {
+    crosshair.style.display = 'block';
+    if (threeControls) threeControls.enabled = false;
+    walkControls.active = true;
+    // Spawn on the west boulevard looking east along the main avenue
+    if (walkControls.pos.x === 0 && walkControls.pos.z === 0) {
+      walkControls.pos.x = -620;
+      walkControls.pos.z = 0;
+      walkControls.rot.yaw = -Math.PI / 2;
+      walkControls.rot.pitch = -0.02;
+    }
+    walkControls.lastTime = performance.now();
+    updateWalkMode();
+  } else {
     crosshair.style.display = 'none';
     walkControls.active = false;
   }
@@ -1454,10 +2131,7 @@ function onWheel(e) {
   camera.y += (before.y - after.y);
 
   // Update Zoom Indicator
-  const zoomText = document.getElementById('statusZoomText');
-  if (zoomText) {
-    zoomText.innerText = `${Math.round(camera.zoom * 42)}%`;
-  }
+  updateZoomStatus();
   render2D();
 }
 
@@ -1583,12 +2257,12 @@ function buildAssetPalette() {
   if (!container) return;
 
   const categoryTitles = {
-    buildings: 'BUILDINGS (24)',
-    commercial: 'COMMERCIAL (18)',
-    industrial: 'INDUSTRIAL (14)',
-    public_facilities: 'PUBLIC FACILITIES (16)',
-    parks_recreation: 'PARKS & RECREATION (20)',
-    infrastructure: 'INFRASTRUCTURE (32)'
+    buildings: 'BUILDINGS',
+    commercial: 'COMMERCIAL',
+    industrial: 'INDUSTRIAL',
+    public_facilities: 'PUBLIC FACILITIES',
+    parks_recreation: 'PARKS & RECREATION',
+    infrastructure: 'INFRASTRUCTURE'
   };
 
   container.innerHTML = '';
@@ -1600,7 +2274,7 @@ function buildAssetPalette() {
 
     const heading = document.createElement('h4');
     heading.className = 'text-[10px] font-bold text-slate-400 tracking-wider uppercase flex items-center justify-between cursor-pointer py-1';
-    heading.innerHTML = `<span>${categoryTitles[catKey]}</span><i data-lucide="chevron-down" class="w-3 h-3 text-slate-500"></i>`;
+    heading.innerHTML = `<span>${categoryTitles[catKey] || catKey.toUpperCase()} (${items.length})</span><i data-lucide="chevron-down" class="w-3 h-3 text-slate-500"></i>`;
     catDiv.appendChild(heading);
 
     const grid = document.createElement('div');
@@ -1819,18 +2493,25 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Setup DOM and engines
   resize2DCanvas();
+  fitPlanToView();
   setupCanvasEvents();
   buildAssetPalette();
   updateInspector();
 
-  // Initialize Three.js 3D and PiP
-  initThreeJSEngine();
+  // Initialize Three.js 3D and PiP (never let a WebGL failure block the 2D app)
+  try {
+    initThreeJSEngine();
+  } catch (err) {
+    console.error('3D engine failed:', err);
+    show3DUnavailable('WebGL could not be initialised in this browser.');
+  }
 
   // Initial 2D render
   render2D();
 
   window.addEventListener('resize', () => {
     resize2DCanvas();
+    resizeThreeRenderer();
     render2D();
   });
 });
