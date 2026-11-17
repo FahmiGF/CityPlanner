@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CityPlanner — Urban Planning & Architecture Studio</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- OrbitControls CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Custom CityPlanner Styles -->
+  <link rel="stylesheet" href="cityplanner.css" />
+</head>
+<body class="h-screen w-screen flex flex-col antialiased bg-[#0c120e] text-slate-200 overflow-hidden">
+
+  <!-- ======================================================== -->
+  <!-- TOP NAVIGATION HEADER -->
+  <!-- ======================================================== -->
+  <header class="h-14 bg-[#111713] border-b border-[#1e2920] px-4 flex items-center justify-between z-30 shrink-0 select-none">
+    
+    <!-- Left: Brand Logo & Title -->
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white shadow-md shadow-emerald-950/50">
+        <i data-lucide="building-2" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="font-bold text-sm text-white tracking-wide">CityPlanner</h1>
+          <span class="text-[9px] font-mono uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-1.5 py-0.2 rounded">v1.0 Pro</span>
+        </div>
+        <p class="text-[10px] text-slate-400">Urban Planning & Architecture</p>
+      </div>
+    </div>
+
+    <!-- Center: Modes Toggle -->
+    <div class="flex items-center gap-1.5 bg-[#0a0f0c] p-1 rounded-xl border border-white/5 text-xs">
+      <button onclick="switchViewMode('2d')" id="btnMode2D" class="nav-tab-btn active px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1.5">
+        <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+        <span>2D PLAN</span>
+      </button>
+
+      <button onclick="switchViewMode('3d')" id="btnMode3D" class="nav-tab-btn px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1.5">
+        <i data-lucide="box" class="w-3.5 h-3.5"></i>
+        <span>3D VIEW</span>
+      </button>
+
+      <button onclick="switchViewMode('blueprint')" id="btnModeBlueprint" class="nav-tab-btn px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1.5">
+        <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+        <span>BLUEPRINT</span>
+      </button>
+
+      <button onclick="switchViewMode('walk')" id="btnModeWalk" class="nav-tab-btn px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1.5">
+        <i data-lucide="footprints" class="w-3.5 h-3.5"></i>
+        <span>WALK MODE</span>
+      </button>
+    </div>
+
+    <!-- Right: Header Tools & Controls -->
+    <div class="flex items-center gap-2">
+      <!-- Grid Toggle -->
+      <button onclick="toggleGrid()" id="btnGridToggle" class="hdr-tool-btn active px-2.5 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5" title="Toggle Grid Snapping">
+        <i data-lucide="grid" class="w-3.5 h-3.5 text-emerald-400"></i>
+        <span id="gridLabelText">GRID ✓</span>
+      </button>
+
+      <!-- Smart Ruler -->
+      <button onclick="toggleSmartRuler()" id="btnSmartRuler" class="hdr-tool-btn px-2.5 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5" title="Smart Distance & Area Ruler">
+        <i data-lucide="ruler" class="w-3.5 h-3.5 text-cyan-400"></i>
+        <span>SMART RULER</span>
+      </button>
+
+      <!-- Layers Dropdown -->
+      <div class="relative">
+        <button onclick="toggleLayersDropdown()" id="btnLayersDropdown" class="hdr-tool-btn px-2.5 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5" title="Layers Visibility">
+          <i data-lucide="layers" class="w-3.5 h-3.5 text-blue-400"></i>
+          <span>LAYERS</span>
+          <i data-lucide="chevron-down" class="w-3 h-3 text-slate-400"></i>
+        </button>
+        <div id="quickLayersMenu" class="hidden absolute right-0 mt-2 w-48 rounded-xl bg-[#121a14] border border-[#233227] p-2 shadow-2xl z-50 text-xs space-y-1">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- Export Button -->
+      <div class="relative">
+        <button onclick="toggleExportMenu()" id="btnExportMenu" class="hdr-tool-btn px-2.5 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5" title="Export Plan & 3D">
+          <i data-lucide="upload" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span>EXPORT</span>
+          <i data-lucide="chevron-down" class="w-3 h-3 text-slate-400"></i>
+        </button>
+        <div id="exportMenuDropdown" class="hidden absolute right-0 mt-2 w-48 rounded-xl bg-[#121a14] border border-[#233227] py-1.5 shadow-2xl z-50 text-xs">
+          <button onclick="exportPlanPNG(); closeExportMenu();" class="w-full text-left px-3 py-1.5 hover:bg-[#1a281e] flex items-center gap-2">
+            <i data-lucide="image" class="w-3.5 h-3.5 text-emerald-400"></i> High-Res PNG Image
+          </button>
+          <button onclick="exportVectorSVG(); closeExportMenu();" class="w-full text-left px-3 py-1.5 hover:bg-[#1a281e] flex items-center gap-2">
+            <i data-lucide="file-code" class="w-3.5 h-3.5 text-cyan-400"></i> Vector SVG Plan
+          </button>
+          <button onclick="exportGeoJSON(); closeExportMenu();" class="w-full text-left px-3 py-1.5 hover:bg-[#1a281e] flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-400"></i> GeoJSON / GIS Data
+          </button>
+          <button onclick="exportPlanJSON(); closeExportMenu();" class="w-full text-left px-3 py-1.5 hover:bg-[#1a281e] flex items-center gap-2">
+            <i data-lucide="save" class="w-3.5 h-3.5 text-blue-400"></i> Save Project (JSON)
+          </button>
+          <div class="h-[1px] bg-[#233227] my-1"></div>
+          <button onclick="triggerImportJSON(); closeExportMenu();" class="w-full text-left px-3 py-1.5 hover:bg-[#1a281e] flex items-center gap-2">
+            <i data-lucide="folder-open" class="w-3.5 h-3.5 text-purple-400"></i> Load Project (JSON)
+          </button>
+        </div>
+        <input type="file" id="importJSONInput" accept=".json" class="hidden" onchange="handleImportJSON(event)" />
+      </div>
+
+      <div class="h-4 w-[1px] bg-[#233227] mx-1"></div>
+
+      <!-- Day/Night Lighting Cycle -->
+      <button onclick="cycleTimeOfDay()" id="btnTimeOfDay" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-amber-400 border border-white/10 transition" title="Toggle Lighting (Noon, Sunset, Night)">
+        <i data-lucide="sun" class="w-4 h-4" id="timeOfDayIcon"></i>
+      </button>
+
+      <!-- Settings -->
+      <button onclick="openSettingsModal()" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 transition" title="Settings">
+        <i data-lucide="settings" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Fullscreen / Window Controls -->
+      <button onclick="toggleFullscreen()" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 transition" title="Fullscreen Toggle">
+        <i data-lucide="maximize" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- MAIN WORKSPACE -->
+  <!-- ======================================================== -->
+  <div class="flex-1 flex overflow-hidden relative">
+
+    <!-- LEFT SIDEBAR: ASSET PALETTE (Width: 280px) -->
+    <aside class="w-72 bg-[#111713] border-r border-[#1e2920] flex flex-col shrink-0 z-20">
+      <!-- Search Box -->
+      <div class="p-3 border-b border-[#1e2920]">
+        <div class="relative">
+          <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-2.5 text-slate-400"></i>
+          <input 
+            type="text" 
+            id="assetSearchInput" 
+            placeholder="Search assets..." 
+            oninput="filterAssetPalette(this.value)"
+            class="w-full pl-8 pr-7 py-1.5 bg-[#0a0f0c] border border-[#233227] rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500"
+          />
+          <button id="btnClearSearch" onclick="clearSearchInput()" class="hidden absolute right-2 top-2 text-slate-400 hover:text-white">
+            <i data-lucide="x" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Categories & Cards List -->
+      <div id="paletteCategoriesContainer" class="flex-1 overflow-y-auto p-3 space-y-4">
+        <!-- Injected via JavaScript (BUILDINGS 24, COMMERCIAL 18, INDUSTRIAL 14, PUBLIC 16, PARKS 20, INFRASTRUCTURE 32) -->
+      </div>
+    </aside>
+
+    <!-- CENTER CANVAS VIEWPORT -->
+    <main class="flex-1 relative bg-[#090e0b] overflow-hidden" id="viewportMainContainer">
+      
+      <!-- 2D Masterplan Canvas -->
+      <canvas id="cityPlanCanvas" class="w-full h-full cursor-grab active:cursor-grabbing block"></canvas>
+
+      <!-- 3D WebGL Canvas (Three.js) -->
+      <div id="threeContainer" class="absolute inset-0 hidden"></div>
+
+      <!-- Walk Mode Crosshair & Joysticks -->
+      <div id="walkCrosshair"></div>
+      <div id="leftJoystick" class="virtual-joystick left-6">
+        <div class="joystick-thumb"></div>
+      </div>
+      <div id="rightJoystick" class="virtual-joystick right-6">
+        <div class="joystick-thumb"></div>
+      </div>
+
+      <!-- Picture-in-Picture (PiP) 3D Preview Card (Bottom Left) -->
+      <div id="pip3DPreview" class="pip-window absolute bottom-12 left-4 z-20 rounded-xl overflow-hidden w-64 h-40">
+        <div class="flex items-center justify-between px-2.5 py-1.5 bg-[#141d17] border-b border-white/10 text-[10px] font-bold text-slate-300">
+          <span class="flex items-center gap-1.5">
+            <i data-lucide="video" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <span>3D PREVIEW</span>
+          </span>
+          <div class="flex items-center gap-1">
+            <button onclick="switchViewMode('3d')" class="p-1 hover:text-white" title="Expand to Full 3D View">
+              <i data-lucide="maximize-2" class="w-3 h-3"></i>
+            </button>
+            <button onclick="togglePiPWindow()" class="p-1 hover:text-white" title="Minimize / Hide">
+              <i data-lucide="minus" class="w-3 h-3"></i>
+            </button>
+          </div>
+        </div>
+        <div id="pipThreeCanvasContainer" class="w-full h-full relative bg-slate-950">
+          <!-- 3D Mini Scene Injected via JS -->
+        </div>
+      </div>
+
+      <!-- Floating Bottom Action Dock (Pointer, Marquee, Pan, Rotate, Delete) -->
+      <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 floating-dock rounded-xl px-2 py-1.5 flex items-center gap-1">
+        <button onclick="setToolMode('pointer')" id="toolPointer" class="p-2 rounded-lg bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 transition hover:bg-emerald-600/40" title="Pointer / Select Tool (V)">
+          <i data-lucide="mouse-pointer-2" class="w-4 h-4"></i>
+        </button>
+        <button onclick="setToolMode('marquee')" id="toolMarquee" class="p-2 rounded-lg hover:bg-white/10 text-slate-300 transition" title="Marquee Box Select Tool (M)">
+          <i data-lucide="box-select" class="w-4 h-4"></i>
+        </button>
+        <button onclick="setToolMode('pan')" id="toolPan" class="p-2 rounded-lg hover:bg-white/10 text-slate-300 transition" title="Hand / Pan Viewport (H)">
+          <i data-lucide="hand" class="w-4 h-4"></i>
+        </button>
+        <div class="h-4 w-[1px] bg-white/10 mx-0.5"></div>
+        <button onclick="rotateSelectedAsset()" class="p-2 rounded-lg hover:bg-white/10 text-slate-300 transition" title="Rotate 90° (R)">
+          <i data-lucide="rotate-cw" class="w-4 h-4 text-emerald-400"></i>
+        </button>
+        <button onclick="deleteSelectedAsset()" class="p-2 rounded-lg hover:bg-red-950/60 hover:text-red-300 text-slate-300 transition" title="Delete Asset (Del)">
+          <i data-lucide="trash-2" class="w-4 h-4 text-red-400"></i>
+        </button>
+      </div>
+
+      <!-- Bottom Status Bar -->
+      <footer class="absolute bottom-0 left-0 right-0 h-8 bg-[#111713]/95 backdrop-blur border-t border-[#1e2920] px-4 flex items-center justify-between text-[10px] font-mono text-slate-400 z-20">
+        <div class="flex items-center gap-4">
+          <span>Coordinates: <strong id="statusCoordsText" class="text-slate-200">X: 12450.32  Y: 8730.17</strong></span>
+          <span class="text-white/20">•</span>
+          <span id="statusScaleText">Scale: 1:2000</span>
+          <span class="text-white/20">•</span>
+          <span>Zoom: <strong id="statusZoomText" class="text-emerald-400">68%</strong></span>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <span class="flex items-center gap-1.5 text-emerald-400 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Ready</span>
+          </span>
+          <span class="text-white/20">•</span>
+          <span class="text-slate-300 flex items-center gap-1">
+            <i data-lucide="check" class="w-3 h-3 text-emerald-400"></i>
+            <span>Auto Save: ON</span>
+          </span>
+        </div>
+      </footer>
+
+    </main>
+
+    <!-- RIGHT SIDEBAR: INSPECTOR & SITE ANALYTICS (Width: 320px) -->
+    <aside class="w-80 bg-[#111713] border-l border-[#1e2920] flex flex-col shrink-0 z-20 overflow-y-auto">
+      
+      <!-- Selected Asset Inspector -->
+      <div class="border-b border-[#1e2920] p-3 space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="font-bold text-xs text-white uppercase tracking-wider flex items-center gap-1.5">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <span>SELECTED ASSET</span>
+          </h3>
+          <button onclick="deselectAsset()" class="text-slate-400 hover:text-white p-1">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- 3D Photo / Render Thumbnail Card -->
+        <div class="w-full h-32 rounded-xl bg-[#090e0b] border border-[#233227] overflow-hidden relative flex items-center justify-center">
+          <canvas id="inspectorPreviewCanvas" width="280" height="128" class="w-full h-full object-cover"></canvas>
+          <div class="absolute bottom-1 right-1 bg-black/60 backdrop-blur px-1.5 py-0.5 rounded text-[9px] font-mono text-emerald-400">
+            3D Mesh
+          </div>
+        </div>
+
+        <!-- Title & Description -->
+        <div>
+          <h4 id="inspectAssetName" class="text-sm font-bold text-white tracking-wide">Modern Stadium</h4>
+          <p id="inspectAssetDesc" class="text-[11px] text-slate-400 leading-snug mt-0.5">
+            A large multi-purpose stadium for sports and events.
+          </p>
+        </div>
+
+        <!-- Dimensions -->
+        <div class="space-y-1.5 pt-1">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">DIMENSIONS</span>
+          <div class="grid grid-cols-3 gap-2">
+            <div>
+              <label class="text-[9px] text-slate-500 block">Width</label>
+              <div class="flex items-center bg-[#090e0b] border border-[#233227] rounded px-2 py-1">
+                <input type="number" id="dimWidthInput" step="1" oninput="updateAssetDimensions()" class="w-full bg-transparent text-xs font-mono text-white focus:outline-none" />
+                <span class="text-[9px] text-slate-500 ml-1">m</span>
+              </div>
+            </div>
+            <div>
+              <label class="text-[9px] text-slate-500 block">Length</label>
+              <div class="flex items-center bg-[#090e0b] border border-[#233227] rounded px-2 py-1">
+                <input type="number" id="dimLengthInput" step="1" oninput="updateAssetDimensions()" class="w-full bg-transparent text-xs font-mono text-white focus:outline-none" />
+                <span class="text-[9px] text-slate-500 ml-1">m</span>
+              </div>
+            </div>
+            <div>
+              <label class="text-[9px] text-slate-500 block">Height</label>
+              <div class="flex items-center bg-[#090e0b] border border-[#233227] rounded px-2 py-1">
+                <input type="number" id="dimHeightInput" step="1" oninput="updateAssetDimensions()" class="w-full bg-transparent text-xs font-mono text-white focus:outline-none" />
+                <span class="text-[9px] text-slate-500 ml-1">m</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transform -->
+        <div class="space-y-1.5 pt-1">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">TRANSFORM</span>
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <div class="flex items-center justify-between bg-[#090e0b] border border-[#233227] rounded px-2.5 py-1">
+              <span class="text-[10px] text-slate-400">Rotation</span>
+              <span id="inspectRotValue" class="font-mono text-emerald-400 font-bold">0.0°</span>
+            </div>
+            <div class="flex items-center justify-between bg-[#090e0b] border border-[#233227] rounded px-2.5 py-1">
+              <span class="text-[10px] text-slate-400">Elevation</span>
+              <span id="inspectElevValue" class="font-mono text-cyan-400 font-bold">0.0 m</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Materials -->
+        <div class="space-y-1.5 pt-1">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">MATERIALS</span>
+          <div class="space-y-1 text-xs">
+            <div class="flex items-center justify-between p-1.5 bg-[#090e0b] border border-[#233227] rounded-lg">
+              <div class="flex items-center gap-2">
+                <span class="w-3.5 h-3.5 rounded-full bg-slate-400 border border-white/20"></span>
+                <span class="text-[11px] text-slate-300">Concrete (Primary)</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-3 h-3 text-slate-500"></i>
+            </div>
+            <div class="flex items-center justify-between p-1.5 bg-[#090e0b] border border-[#233227] rounded-lg">
+              <div class="flex items-center gap-2">
+                <span class="w-3.5 h-3.5 rounded-full bg-sky-400 border border-white/20"></span>
+                <span class="text-[11px] text-slate-300">Glass (Accent)</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-3 h-3 text-slate-500"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Site Statistics Section -->
+      <div class="border-b border-[#1e2920] p-3 space-y-2.5">
+        <h3 class="font-bold text-xs text-white uppercase tracking-wider flex items-center justify-between">
+          <span class="flex items-center gap-1.5">
+            <i data-lucide="bar-chart-2" class="w-3.5 h-3.5 text-blue-400"></i>
+            <span>SITE STATISTICS</span>
+          </span>
+        </h3>
+        <div class="space-y-1.5 text-xs font-mono">
+          <div class="flex justify-between items-center py-0.5">
+            <span class="text-slate-400 text-[11px] flex items-center gap-1.5">
+              <i data-lucide="maximize" class="w-3 h-3 text-slate-500"></i> Total Area
+            </span>
+            <strong class="text-white">4,250,000 m²</strong>
+          </div>
+          <div class="flex justify-between items-center py-0.5">
+            <span class="text-slate-400 text-[11px] flex items-center gap-1.5">
+              <i data-lucide="building" class="w-3 h-3 text-blue-400"></i> Built Up Area
+            </span>
+            <strong class="text-blue-400">1,980,000 m²</strong>
+          </div>
+          <div class="flex justify-between items-center py-0.5">
+            <span class="text-slate-400 text-[11px] flex items-center gap-1.5">
+              <i data-lucide="trees" class="w-3 h-3 text-emerald-400"></i> Green Space
+            </span>
+            <strong class="text-emerald-400">1,620,000 m²</strong>
+          </div>
+          <div class="flex justify-between items-center py-0.5">
+            <span class="text-slate-400 text-[11px] flex items-center gap-1.5">
+              <i data-lucide="compass" class="w-3 h-3 text-amber-400"></i> Roads & Infra
+            </span>
+            <strong class="text-amber-400">650,000 m²</strong>
+          </div>
+        </div>
+
+        <div class="pt-2 border-t border-[#1e2920]">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">POPULATION (EST.)</span>
+          <div class="flex justify-between items-center text-xs font-mono">
+            <span class="text-slate-400">Density</span>
+            <span class="text-white"><strong>125,000</strong> <span class="text-slate-500 text-[10px]">(29.4 / km²)</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layers Section -->
+      <div class="border-b border-[#1e2920] p-3 space-y-2">
+        <h3 class="font-bold text-xs text-white uppercase tracking-wider flex items-center justify-between">
+          <span class="flex items-center gap-1.5">
+            <i data-lucide="layers" class="w-3.5 h-3.5 text-cyan-400"></i>
+            <span>LAYERS</span>
+          </span>
+        </h3>
+        <div class="space-y-1.5 text-xs">
+          <label class="flex items-center justify-between p-1 hover:bg-white/5 rounded cursor-pointer">
+            <span class="flex items-center gap-2">
+              <input type="checkbox" id="layerCheckBuildings" checked onchange="toggleLayerVisibility('buildings', this.checked)" class="accent-emerald-500 rounded" />
+              <span class="text-slate-300">Buildings</span>
+            </span>
+            <i data-lucide="eye" class="w-3.5 h-3.5 text-slate-500"></i>
+          </label>
+          <label class="flex items-center justify-between p-1 hover:bg-white/5 rounded cursor-pointer">
+            <span class="flex items-center gap-2">
+              <input type="checkbox" id="layerCheckRoads" checked onchange="toggleLayerVisibility('roads', this.checked)" class="accent-emerald-500 rounded" />
+              <span class="text-slate-300">Roads</span>
+            </span>
+            <i data-lucide="eye" class="w-3.5 h-3.5 text-slate-500"></i>
+          </label>
+          <label class="flex items-center justify-between p-1 hover:bg-white/5 rounded cursor-pointer">
+            <span class="flex items-center gap-2">
+              <input type="checkbox" id="layerCheckGreen" checked onchange="toggleLayerVisibility('green', this.checked)" class="accent-emerald-500 rounded" />
+              <span class="text-slate-300">Parks & Greenery</span>
+            </span>
+            <i data-lucide="eye" class="w-3.5 h-3.5 text-slate-500"></i>
+          </label>
+          <label class="flex items-center justify-between p-1 hover:bg-white/5 rounded cursor-pointer">
+            <span class="flex items-center gap-2">
+              <input type="checkbox" id="layerCheckWater" checked onchange="toggleLayerVisibility('water', this.checked)" class="accent-emerald-500 rounded" />
+              <span class="text-slate-300">Water</span>
+            </span>
+            <i data-lucide="eye" class="w-3.5 h-3.5 text-slate-500"></i>
+          </label>
+          <label class="flex items-center justify-between p-1 hover:bg-white/5 rounded cursor-pointer">
+            <span class="flex items-center gap-2">
+              <input type="checkbox" id="layerCheckUtilities" checked onchange="toggleLayerVisibility('utilities', this.checked)" class="accent-emerald-500 rounded" />
+              <span class="text-slate-300">Utilities</span>
+            </span>
+            <i data-lucide="eye" class="w-3.5 h-3.5 text-slate-500"></i>
+          </label>
+          <label class="flex items-center justify-between p-1 hover:bg-white/5 rounded cursor-pointer">
+            <span class="flex items-center gap-2">
+              <input type="checkbox" id="layerCheckDecorations" checked onchange="toggleLayerVisibility('decorations', this.checked)" class="accent-emerald-500 rounded" />
+              <span class="text-slate-300">Decorations</span>
+            </span>
+            <i data-lucide="eye" class="w-3.5 h-3.5 text-slate-500"></i>
+          </label>
+        </div>
+      </div>
+
+      <!-- Land Use Distribution (Donut Chart) -->
+      <div class="p-3 space-y-2">
+        <h3 class="font-bold text-xs text-white uppercase tracking-wider flex items-center justify-between">
+          <span class="flex items-center gap-1.5">
+            <i data-lucide="pie-chart" class="w-3.5 h-3.5 text-amber-400"></i>
+            <span>LAND USE DISTRIBUTION</span>
+          </span>
+        </h3>
+        
+        <div class="flex items-center gap-4 pt-1">
+          <!-- Circular Donut Chart SVG -->
+          <div class="relative w-18 h-18 shrink-0">
+            <svg class="w-18 h-18 -rotate-90 transform" viewBox="0 0 36 36">
+              <!-- Background Circle -->
+              <circle cx="18" cy="18" r="14" fill="none" stroke="#1f2922" stroke-width="5" />
+              <!-- Built Segment (46.6%) -->
+              <circle class="donut-segment" cx="18" cy="18" r="14" fill="none" stroke="#3b82f6" stroke-width="5" stroke-dasharray="41 88" stroke-dashoffset="0" />
+              <!-- Green Segment (38.1%) -->
+              <circle class="donut-segment" cx="18" cy="18" r="14" fill="none" stroke="#10b981" stroke-width="5" stroke-dasharray="33.5 88" stroke-dashoffset="-41" />
+              <!-- Infrastructure Segment (15.3%) -->
+              <circle class="donut-segment" cx="18" cy="18" r="14" fill="none" stroke="#f59e0b" stroke-width="5" stroke-dasharray="13.5 88" stroke-dashoffset="-74.5" />
+            </svg>
+          </div>
+
+          <!-- Legend -->
+          <div class="space-y-1 text-[11px] font-mono flex-1">
+            <div class="flex items-center justify-between">
+              <span class="flex items-center gap-1.5 text-slate-300">
+                <span class="w-2.5 h-2.5 rounded-sm bg-blue-500"></span> Built
+              </span>
+              <span class="font-bold text-white">46.6%</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="flex items-center gap-1.5 text-slate-300">
+                <span class="w-2.5 h-2.5 rounded-sm bg-emerald-500"></span> Green
+              </span>
+              <span class="font-bold text-white">38.1%</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="flex items-center gap-1.5 text-slate-300">
+                <span class="w-2.5 h-2.5 rounded-sm bg-amber-500"></span> Infrastructure
+              </span>
+              <span class="font-bold text-white">15.3%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- SETTINGS MODAL -->
+  <!-- ======================================================== -->
+  <div id="settingsModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-[#121914] max-w-md w-full rounded-2xl border border-[#233227] p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <i data-lucide="settings" class="w-4 h-4 text-emerald-400"></i>
+          <span>CityPlanner Preferences</span>
+        </h3>
+        <button onclick="closeSettingsModal()" class="text-slate-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div class="flex items-center justify-between p-2.5 bg-[#0a0f0c] rounded-xl border border-white/5">
+          <div>
+            <span class="text-slate-200 font-semibold block">Render Quality & Performance</span>
+            <span class="text-[10px] text-slate-500">Dynamic LOD & viewport culling</span>
+          </div>
+          <select id="prefQuality" class="bg-[#152018] text-slate-300 border border-white/10 rounded-lg px-2.5 py-1 text-xs">
+            <option value="ultra" selected>Ultra (60 FPS)</option>
+            <option value="high">High Performance</option>
+            <option value="eco">Battery Saver (Mobile)</option>
+          </select>
+        </div>
+
+        <div class="flex items-center justify-between p-2.5 bg-[#0a0f0c] rounded-xl border border-white/5">
+          <div>
+            <span class="text-slate-200 font-semibold block">Grid Snap Size</span>
+            <span class="text-[10px] text-slate-500">Step distance in meters</span>
+          </div>
+          <select id="prefGridSnap" class="bg-[#152018] text-slate-300 border border-white/10 rounded-lg px-2.5 py-1 text-xs">
+            <option value="1" selected>1.0 Meter</option>
+            <option value="5">5.0 Meters</option>
+            <option value="10">10.0 Meters (Urban Block)</option>
+          </select>
+        </div>
+
+        <div class="flex items-center justify-between p-2.5 bg-[#0a0f0c] rounded-xl border border-white/5">
+          <div>
+            <span class="text-slate-200 font-semibold block">Auto-Save State</span>
+            <span class="text-[10px] text-slate-500">Saves masterplan to browser storage</span>
+          </div>
+          <input type="checkbox" id="prefAutoSave" checked class="accent-emerald-500" />
+        </div>
+      </div>
+
+      <div class="flex justify-end pt-2">
+        <button onclick="closeSettingsModal()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition">
+          Save & Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load CityPlanner Core Engine -->
+  <script src="cityplanner.js"></script>
+</body>
+</html>

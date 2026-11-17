@@ -1,0 +1,35 @@
+================================================================================
+                    CARA MENJALANKAN: CITYPLANNER
+================================================================================
+
+CityPlanner adalah platform studio perancangan tata kota, masterplan arsitektur,
+dan visualisasi 2D Plan / 3D WebGL / Blueprint CAD / First-Person Walk Mode.
+
+PERSYARATAN:
+- Komputer / Laptop / Tablet / HP dengan browser modern (Chrome, Edge, Safari, Firefox).
+- Python 3.8+ (opsional jika menggunakan server FastAPI/Python, atau bisa langsung klik 2x file index.html).
+
+--------------------------------------------------------------------------------
+CARA 1 (Paling Cepat - 1-Click Windows Launcher):
+--------------------------------------------------------------------------------
+1. Klik dua kali file:
+   Buka_CityPlanner.bat
+2. Browser akan terbuka otomatis di http://localhost:8003
+
+--------------------------------------------------------------------------------
+CARA 2 (Manual via Terminal / CMD):
+--------------------------------------------------------------------------------
+1. Buka Terminal di folder CityPlanner:
+   cd "C:\Kuliah Sisfor\Github Project\CityPlanner"
+2. Jalankan:
+   python run.py
+3. Buka browser di http://localhost:8003
+
+--------------------------------------------------------------------------------
+CARA 3 (Standalone Tanpa Server / Offline Langsung):
+--------------------------------------------------------------------------------
+1. Buka folder:
+   C:\Kuliah Sisfor\Github Project\CityPlanner\backend\app\static
+2. Klik dua kali file:
+   index.html
+Aplikasi akan langsung berjalan mulus di browser secara native!
